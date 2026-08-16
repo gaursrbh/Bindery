@@ -117,3 +117,31 @@ def test_overflow_raises_render_error(ds, tmp_path):
         render(composition, ds, tmp_path / "out.pptx")
     assert exc.value.block_index == 0
     assert exc.value.prop == "bullet-list"
+
+
+def test_title_starts_new_slide_and_blocks_stack(ds, tmp_path):
+    """Regression test: M0/M1's renderer placed every block on one slide at
+    hardcoded per-component-type coordinates. A composition with more than
+    one title (or more than one of the same component) rendered every
+    instance of a component on top of the others — found via a real 8-block
+    brief, confirmed by rasterizing with LibreOffice."""
+    composition = _composition(
+        {"component": "title", "props": {"headline": "Slide one"}},
+        {"component": "bullet-list", "props": {"items": ["a", "b"]}},
+        {"component": "title", "props": {"headline": "Slide two"}},
+        {"component": "bullet-list", "props": {"items": ["c", "d"]}},
+        {"component": "bullet-list", "props": {"items": ["e", "f"]}},
+    )
+    result = render(composition, ds, tmp_path / "out.pptx")
+    assert result.blocks_rendered == 5
+
+    prs = Presentation(result.path)
+    assert len(prs.slides) == 2  # one per title block
+
+    slide2_shapes = list(prs.slides[1].shapes)
+    assert len(slide2_shapes) == 3  # title + 2 bullet-lists, not overlapping
+
+    # No two shapes on the same slide start at the same y — the exact
+    # symptom of the bug (every bullet-list landed at the same fixed y).
+    tops = [s.top for s in slide2_shapes]
+    assert len(tops) == len(set(tops))

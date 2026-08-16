@@ -24,6 +24,7 @@ from bindery.render.overflow import check_overflow
 _SLIDE_WIDTH_IN = 10
 _SLIDE_HEIGHT_IN = 5.63
 _BLANK_LAYOUT_INDEX = 6
+_MARGIN_TOP_IN = 0.5
 
 _CORE_SCHEMA = json.loads((SCHEMA_ROOT / "core.schema.json").read_text())
 _REGISTRY = Registry().with_resource(
@@ -80,16 +81,35 @@ def render(composition: dict, ds: DesignSystem, out_path: Path) -> RenderResult:
     prs = Presentation()
     prs.slide_width = Inches(_SLIDE_WIDTH_IN)
     prs.slide_height = Inches(_SLIDE_HEIGHT_IN)
-    slide = prs.slides.add_slide(prs.slide_layouts[_BLANK_LAYOUT_INDEX])
-    bg = slide.background
-    bg.fill.solid()
-    bg.fill.fore_color.rgb = _hexcolor(tokens, "background")
 
+    def _new_slide():
+        s = prs.slides.add_slide(prs.slide_layouts[_BLANK_LAYOUT_INDEX])
+        bg = s.background
+        bg.fill.solid()
+        bg.fill.fore_color.rgb = _hexcolor(tokens, "background")
+        return s
+
+    slide = None
+    cursor_y = _MARGIN_TOP_IN
     for index, block in enumerate(composition["blocks"]):
         component = block["component"]
         layout_fn = layout_fns[component]
+
+        # A `title` block starts a new slide — mirrors how a real deck is
+        # authored (each title is a new slide's headline), and is what
+        # M0/M1's fixed-position renderer never modeled: it placed every
+        # block on one slide at hardcoded coordinates, so 2+ blocks of the
+        # same component type landed on identical coordinates and rendered
+        # as garbled overlapping text (found via a real brief with 8 blocks
+        # across 3 titles — confirmed visually with LibreOffice rasterization,
+        # not by the test suite, which only ever exercised 1-2 blocks).
+        if component == "title" or slide is None:
+            slide = _new_slide()
+            cursor_y = _MARGIN_TOP_IN
+
         shapes_before = len(slide.shapes)
-        layout_fn(slide, block["props"], tokens)
+        consumed = layout_fn(slide, block["props"], tokens, cursor_y)
+        cursor_y += consumed if consumed is not None else 0.0
         for shape in list(slide.shapes)[shapes_before:]:
             if shape.has_text_frame:
                 check_overflow(shape, font_family, index, component)

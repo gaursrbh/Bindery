@@ -7,8 +7,11 @@ def _hexcolor(tokens, name):
     return RGBColor.from_string(tokens["color"][name]["value"].lstrip("#"))
 
 
-def layout(slide, props: dict, tokens: dict) -> None:
-    box = slide.shapes.add_textbox(Inches(0.6), Inches(0.5), Inches(9), Inches(1.8))
+_HEIGHT_IN = 1.5
+
+
+def layout(slide, props: dict, tokens: dict, y: float = 0.5) -> float:
+    box = slide.shapes.add_textbox(Inches(0.6), Inches(y), Inches(9), Inches(_HEIGHT_IN))
     tf = box.text_frame
     tf.word_wrap = True
     if "eyebrow" in props:
@@ -24,3 +27,4 @@ def layout(slide, props: dict, tokens: dict) -> None:
     p2.font.size = Pt(int(tokens["typography"]["headline-size"]["value"]))
     p2.font.color.rgb = _hexcolor(tokens, "text")
     p2.font.bold = True
+    return _HEIGHT_IN + 0.2
