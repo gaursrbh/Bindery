@@ -57,6 +57,13 @@ def check_overflow(shape, font_family: str, block_index: int, prop: str) -> None
 
     total_height_pt = 0.0
     for paragraph in tf.paragraphs:
+        if not paragraph.text:
+            # An empty paragraph takes no visible vertical space (e.g. a
+            # decorative shape's default text frame) — real rendering
+            # collapses it, so it shouldn't count as needing a full line.
+            # Found via a real component (a thin accent-rule rectangle)
+            # that always "overflowed" its ~1pt-tall frame otherwise.
+            continue
         size_pt = paragraph.font.size.pt if paragraph.font.size else _DEFAULT_FONT_SIZE_PT
         font = _load_font(font_family, int(round(size_pt)))
         lines = _wrapped_line_count(paragraph.text, font, usable_width_pt)

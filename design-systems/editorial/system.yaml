@@ -1,0 +1,5 @@
+name: editorial
+version: 1.0.0
+description: Generous whitespace, strong typographic hierarchy, large-imagery feel — one of mainPRD Appendix A's three reference systems.
+targets:
+  - pptx
