@@ -2,3 +2,5 @@
 spike/.env.local
 __pycache__/
 *.egg-info/
+node_modules/
+dist/

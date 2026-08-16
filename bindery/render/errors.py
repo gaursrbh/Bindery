@@ -16,3 +16,13 @@ class RenderError(Exception):
         self.prop = prop
         self.detail = detail
         super().__init__(f"block {block_index} ({prop}): {detail}")
+
+
+class WebBuildError(Exception):
+    """Raised when the per-DS Vite build subprocess exits non-zero
+    (M2-spec.md §2.4) — the web renderer's deterministic-failure analogue to
+    PPTX's overflow check, since a page reflows rather than overflowing."""
+
+    def __init__(self, stderr: str):
+        self.stderr = stderr
+        super().__init__(f"web build failed: {stderr}")

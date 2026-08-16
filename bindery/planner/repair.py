@@ -11,8 +11,8 @@ from pathlib import Path
 
 from bindery.ds.loader import DesignSystem
 from bindery.planner.base import Planner, RepairContext
-from bindery.render.errors import CompositionError, RenderError
-from bindery.render.pptx import RenderResult, render
+from bindery.render import render
+from bindery.render.errors import CompositionError, RenderError, WebBuildError
 
 
 def plan_with_repair(
@@ -22,7 +22,7 @@ def plan_with_repair(
     planner: Planner,
     out_path: Path,
     max_attempts: int = 3,
-) -> RenderResult:
+):
     composition: dict | None = None
     last_error: Exception | None = None
 
@@ -41,7 +41,7 @@ def plan_with_repair(
 
         try:
             return render(composition, ds, out_path)
-        except (CompositionError, RenderError) as e:
+        except (CompositionError, RenderError, WebBuildError) as e:
             last_error = e
 
     assert last_error is not None
