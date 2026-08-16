@@ -121,7 +121,12 @@ def _plan(args: argparse.Namespace) -> int:
 
 def _lint(args: argparse.Namespace) -> int:
     artifact_path = Path(args.artifact)
-    target = "pptx" if artifact_path.suffix == ".pptx" else "web"
+    if args.target:
+        target = args.target
+    elif artifact_path.suffix == ".pptx":
+        target = "pptx"
+    else:
+        target = "web"  # ambiguous with html-slides (.html) — override with --target
 
     try:
         ds = loader.load(args.ds, root=Path(args.ds_root))
@@ -254,6 +259,7 @@ def build_parser() -> argparse.ArgumentParser:
     lint.add_argument("artifact")
     lint.add_argument("--ds", required=True)
     lint.add_argument("--ds-root", default="design-systems")
+    lint.add_argument("--target", default=None, help="Override target detection (needed for .html — ambiguous between web/html-slides)")
     lint.set_defaults(func=_lint)
 
     rerender = subparsers.add_parser(

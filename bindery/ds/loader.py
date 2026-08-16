@@ -24,6 +24,7 @@ _TARGET_VOCAB_FILES = {
     "pptx": "pptx.schema.json",
     "web": "web.schema.json",
     "infographic": "infographic.schema.json",
+    "html-slides": "html-slides.schema.json",
 }
 
 # Targets whose components are Python layout functions, loaded via
@@ -33,7 +34,7 @@ _TARGET_VOCAB_FILES = {
 # "infographic" (M4-spec.md §2.2) uses Python components too, different
 # signature (layout(props, tokens, x, y, width) -> str) but the loader
 # doesn't care — it just imports the module and stores `layout`.
-_PYTHON_LAYOUT_TARGETS = {"pptx", "infographic"}
+_PYTHON_LAYOUT_TARGETS = {"pptx", "infographic", "html-slides"}
 
 
 def _parse_semver(version: str, file: str, field_name: str) -> tuple[int, int, int]:

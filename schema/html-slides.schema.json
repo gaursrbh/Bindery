@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bindery.html-slides/v1",
+  "title": "Bindery Composition IR (html-slides target vocab, extends bindery/v1)",
+  "allOf": [
+    {
+      "$ref": "core.schema.json"
+    },
+    {
+      "properties": {
+        "target": {
+          "const": "html-slides"
+        },
+        "blocks": {
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/title"
+              },
+              {
+                "$ref": "#/$defs/statTrio"
+              },
+              {
+                "$ref": "#/$defs/bulletList"
+              },
+              {
+                "$ref": "#/$defs/imageCallout"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "title": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "props"
+      ],
+      "properties": {
+        "component": {
+          "const": "title"
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "headline"
+          ],
+          "properties": {
+            "eyebrow": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 90
+            },
+            "accent": {
+              "enum": [
+                "primary",
+                "secondary",
+                "neutral"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "statTrio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "props"
+      ],
+      "properties": {
+        "component": {
+          "const": "stat-trio"
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stats"
+          ],
+          "properties": {
+            "stats": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "label"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "maxLength": 12
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 30
+                  },
+                  "delta": {
+                    "type": "string",
+                    "maxLength": 10
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "bulletList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "props"
+      ],
+      "properties": {
+        "component": {
+          "const": "bullet-list"
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "heading": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "string",
+                "maxLength": 120
+              }
+            }
+          }
+        }
+      }
+    },
+    "imageCallout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component",
+        "props"
+      ],
+      "properties": {
+        "component": {
+          "const": "image-callout"
+        },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "asset",
+            "caption"
+          ],
+          "properties": {
+            "asset": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "caption": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "accent": {
+              "enum": [
+                "primary",
+                "secondary",
+                "neutral"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
