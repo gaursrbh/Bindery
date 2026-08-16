@@ -21,6 +21,7 @@ from bindery.ds import loader
 from bindery.ds.errors import DesignSystemError
 from bindery.lint import lint as lint_dispatch
 from bindery.planner.errors import PlannerError
+from bindery.planner.claude_cli import ClaudeCliConfig, ClaudeCliPlanner
 from bindery.planner.ollama import OllamaPlanner, PlannerConfig
 from bindery.planner.repair import plan_with_repair
 from bindery.render import extension_for
@@ -41,6 +42,7 @@ class PlanRequest(BaseModel):
     design_system: str
     constraints: dict | None = None
     model: str | None = None
+    planner: str = "ollama"  # "ollama" | "claude-cli"
 
 
 def _bind(ds, ds_spec: str, target: str, composition: dict, out_path: Path, models=None, seed=None):
@@ -91,8 +93,15 @@ def create_app(out_dir: Path, ds_root: Path) -> FastAPI:
 
             brief_text += f"\n\nConstraints:\n{yaml.safe_dump(req.constraints)}"
 
-        config = PlannerConfig(model=req.model) if req.model else PlannerConfig()
-        planner = OllamaPlanner(config)
+        if req.planner == "claude-cli":
+            cli_config = ClaudeCliConfig(model=req.model) if req.model else ClaudeCliConfig()
+            planner = ClaudeCliPlanner(cli_config)
+            model_name, seed = cli_config.model, None
+        else:
+            config = PlannerConfig(model=req.model) if req.model else PlannerConfig()
+            planner = OllamaPlanner(config)
+            model_name, seed = config.model, config.seed
+
         out_path = (
             out_dir / f"artifact-{len(library.load_index(out_dir)) + 1}.{extension_for(req.target)}"
         )
@@ -106,7 +115,7 @@ def create_app(out_dir: Path, ds_root: Path) -> FastAPI:
 
         entry = _bind(
             ds, ds.spec, req.target, composition, result.path,
-            models={"planner": config.model}, seed=config.seed,
+            models={"planner": model_name}, seed=seed,
         )
         return asdict(entry)
 
