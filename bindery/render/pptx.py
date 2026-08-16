@@ -19,6 +19,7 @@ from referencing import Registry, Resource
 
 from bindery.ds.loader import SCHEMA_ROOT, DesignSystem
 from bindery.render.errors import CompositionError, RenderError
+from bindery.render.geometry import check_no_overlap
 from bindery.render.overflow import check_overflow
 
 _SLIDE_WIDTH_IN = 10
@@ -91,6 +92,7 @@ def render(composition: dict, ds: DesignSystem, out_path: Path) -> RenderResult:
 
     slide = None
     cursor_y = _MARGIN_TOP_IN
+    slide_shapes: list[tuple[object, int, str]] = []
     for index, block in enumerate(composition["blocks"]):
         component = block["component"]
         layout_fn = layout_fns[component]
@@ -106,13 +108,23 @@ def render(composition: dict, ds: DesignSystem, out_path: Path) -> RenderResult:
         if component == "title" or slide is None:
             slide = _new_slide()
             cursor_y = _MARGIN_TOP_IN
+            slide_shapes = []
 
         shapes_before = len(slide.shapes)
         consumed = layout_fn(slide, block["props"], tokens, cursor_y)
         cursor_y += consumed if consumed is not None else 0.0
-        for shape in list(slide.shapes)[shapes_before:]:
+        new_shapes = list(slide.shapes)[shapes_before:]
+        for shape in new_shapes:
             if shape.has_text_frame:
                 check_overflow(shape, font_family, index, component)
+
+        # Proactive check (issue #41): catch cross-block overlap before an
+        # artifact ships, rather than after a user reports "jumbled
+        # overlapped items" (issue #36 — fixed reactively, this is the
+        # preventive counterpart). Checked against every block already
+        # placed on this slide, not within this block's own shapes.
+        check_no_overlap(new_shapes, slide_shapes, index, component)
+        slide_shapes.extend((s, index, component) for s in new_shapes)
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     prs.save(out_path)
