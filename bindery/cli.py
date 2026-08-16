@@ -14,8 +14,9 @@ from bindery.ds.errors import DesignSystemError
 from bindery.planner.errors import PlannerError
 from bindery.planner.ollama import OllamaPlanner, PlannerConfig
 from bindery.planner.repair import plan_with_repair
-from bindery.render.errors import CompositionError, RenderError
-from bindery.render.pptx import render
+from bindery.render import extension_for
+from bindery.render import render as render_dispatch
+from bindery.render.errors import CompositionError, RenderError, WebBuildError
 
 
 def _generate(args: argparse.Namespace) -> int:
@@ -28,16 +29,19 @@ def _generate(args: argparse.Namespace) -> int:
         print(str(e), file=sys.stderr)
         return 2
 
-    out_path = Path(args.out) / f"{composition_path.stem}.pptx"
+    out_path = Path(args.out) / f"{composition_path.stem}.{extension_for(composition.get('target'))}"
 
     try:
-        result = render(composition, ds, out_path)
+        result = render_dispatch(composition, ds, out_path)
     except CompositionError as e:
         print(str(e), file=sys.stderr)
         return 3
     except RenderError as e:
         print(str(e), file=sys.stderr)
         return 4
+    except WebBuildError as e:
+        print(str(e), file=sys.stderr)
+        return 6
 
     print(str(result.path))
     return 0
@@ -71,7 +75,7 @@ def _plan(args: argparse.Namespace) -> int:
     config = PlannerConfig(model=args.model) if args.model else PlannerConfig()
     planner = OllamaPlanner(config)
 
-    out_path = Path(args.out) / f"{brief_path.stem}.pptx"
+    out_path = Path(args.out) / f"{brief_path.stem}.{extension_for(target)}"
 
     try:
         result = plan_with_repair(brief_text, ds, target, planner, out_path)
@@ -84,6 +88,9 @@ def _plan(args: argparse.Namespace) -> int:
     except RenderError as e:
         print(str(e), file=sys.stderr)
         return 4
+    except WebBuildError as e:
+        print(str(e), file=sys.stderr)
+        return 6
 
     print(str(result.path))
     return 0

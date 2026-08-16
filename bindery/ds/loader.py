@@ -25,6 +25,12 @@ _TARGET_VOCAB_FILES = {
     "web": "web.schema.json",
 }
 
+# Targets whose components are Python layout functions, loaded via
+# importlib by _load_layout_fns. Non-Python targets (e.g. "web", M2-spec.md
+# §2 — .jsx modules built by a per-DS Vite pipeline) manage their own
+# component loading inside their renderer, not through DesignSystem.layout_fns.
+_PYTHON_LAYOUT_TARGETS = {"pptx"}
+
 
 def _parse_semver(version: str, file: str, field_name: str) -> tuple[int, int, int]:
     m = _SEMVER_RE.match(version)
@@ -179,6 +185,8 @@ def _load_layout_fns(ds_dir: Path, effective_schemas: dict[str, dict]) -> dict[s
     layout_fns: dict[str, dict[str, Callable]] = {}
 
     for target, schema in effective_schemas.items():
+        if target not in _PYTHON_LAYOUT_TARGETS:
+            continue
         target_fns: dict[str, Callable] = {}
         components_dir = ds_dir / "components" / target
         component_names = _component_names(schema)
@@ -304,6 +312,8 @@ def validate(ds: DesignSystem) -> list[ValidationIssue]:
     as a non-raising check for tooling/CLI `bindery ds validate`)."""
     issues: list[ValidationIssue] = []
     for target, schema in ds.effective_schemas.items():
+        if target not in _PYTHON_LAYOUT_TARGETS:
+            continue  # non-Python targets (e.g. web) manage their own component loading
         fns = ds.layout_fns.get(target, {})
         for comp_name in _component_names(schema):
             if comp_name not in fns:
