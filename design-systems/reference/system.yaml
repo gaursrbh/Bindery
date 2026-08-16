@@ -4,3 +4,4 @@ description: M0 reference design system (loader/renderer smoke-test DS, ported f
 targets:
   - pptx
   - web
+  - infographic

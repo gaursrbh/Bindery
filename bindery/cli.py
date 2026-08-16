@@ -194,6 +194,30 @@ def _show(args: argparse.Namespace) -> int:
     return 0
 
 
+def _serve(args: argparse.Namespace) -> int:
+    import uvicorn
+
+    from bindery.server import create_app
+
+    app = create_app(Path(args.out), Path(args.ds_root))
+    uvicorn.run(app, host="127.0.0.1", port=args.port)
+    return 0
+
+
+def _import(args: argparse.Namespace) -> int:
+    from bindery.importer import scan_pptx, write_candidate
+
+    deck_path = Path(args.deck)
+    report = scan_pptx(deck_path)
+    print(f"colors seen: {dict(report.colors.most_common())}", file=sys.stderr)
+    print(f"sizes seen: {dict(report.sizes.most_common())}", file=sys.stderr)
+    print(f"fonts seen: {dict(report.fonts.most_common())}", file=sys.stderr)
+
+    out_path = write_candidate(deck_path, Path(args.out))
+    print(str(out_path))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="bindery")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -240,6 +264,19 @@ def build_parser() -> argparse.ArgumentParser:
     show.add_argument("id")
     show.add_argument("--out", required=True)
     show.set_defaults(func=_show)
+
+    serve = subparsers.add_parser("serve", help="Run the local web UI (FastAPI, localhost only)")
+    serve.add_argument("--port", type=int, default=8420)
+    serve.add_argument("--out", required=True)
+    serve.add_argument("--ds-root", default="design-systems")
+    serve.set_defaults(func=_serve)
+
+    import_cmd = subparsers.add_parser(
+        "import", help="Extract a candidate tokens.json from an existing .pptx deck"
+    )
+    import_cmd.add_argument("deck")
+    import_cmd.add_argument("--out", required=True)
+    import_cmd.set_defaults(func=_import)
 
     return parser
 

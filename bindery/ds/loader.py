@@ -23,13 +23,17 @@ SCHEMA_ROOT = Path(__file__).resolve().parent.parent.parent / "schema"
 _TARGET_VOCAB_FILES = {
     "pptx": "pptx.schema.json",
     "web": "web.schema.json",
+    "infographic": "infographic.schema.json",
 }
 
 # Targets whose components are Python layout functions, loaded via
 # importlib by _load_layout_fns. Non-Python targets (e.g. "web", M2-spec.md
 # §2 — .jsx modules built by a per-DS Vite pipeline) manage their own
 # component loading inside their renderer, not through DesignSystem.layout_fns.
-_PYTHON_LAYOUT_TARGETS = {"pptx"}
+# "infographic" (M4-spec.md §2.2) uses Python components too, different
+# signature (layout(props, tokens, x, y, width) -> str) but the loader
+# doesn't care — it just imports the module and stores `layout`.
+_PYTHON_LAYOUT_TARGETS = {"pptx", "infographic"}
 
 
 def _parse_semver(version: str, file: str, field_name: str) -> tuple[int, int, int]:
