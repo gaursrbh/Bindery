@@ -1,0 +1,25 @@
+{
+  "schema": "bindery/v1",
+  "design_system": "acme@2.1.0",
+  "target": "web",
+  "blocks": [
+    {
+      "component": "title",
+      "props": {
+        "eyebrow": "Q3 2026",
+        "headline": "Enrollment up 12%, cost per member flat",
+        "accent": "primary"
+      }
+    },
+    {
+      "component": "stat-trio",
+      "props": {
+        "stats": [
+          { "value": "142,300", "label": "Members enrolled", "delta": "+12%" },
+          { "value": "$412", "label": "Cost per member", "delta": "0%" },
+          { "value": "94.2%", "label": "Retention", "delta": "+1.4pt" }
+        ]
+      }
+    }
+  ]
+}
