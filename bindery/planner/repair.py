@@ -40,7 +40,8 @@ def plan_with_repair(
         composition = planner.plan(brief, ds, target, repair=repair)
 
         try:
-            return render(composition, ds, out_path)
+            result = render(composition, ds, out_path)
+            return result, composition
         except (CompositionError, RenderError, WebBuildError) as e:
             last_error = e
 

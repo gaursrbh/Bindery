@@ -24,7 +24,13 @@ def test_plan_success(ds_root, tmp_path, monkeypatch, capsys):
     out_dir.mkdir()
 
     fake_result = RenderResult(path=out_dir / "brief.pptx", duration_ms=1, blocks_rendered=1)
-    monkeypatch.setattr(cli, "plan_with_repair", lambda *a, **k: fake_result)
+    fake_composition = {
+        "schema": "bindery/v1", "design_system": "reference@1.0.0",
+        "target": "pptx", "blocks": [],
+    }
+    monkeypatch.setattr(
+        cli, "plan_with_repair", lambda *a, **k: (fake_result, fake_composition)
+    )
 
     code = cli.main(
         ["plan", str(brief_path), "--out", str(out_dir), "--ds-root", str(ds_root)]
@@ -43,7 +49,11 @@ def test_plan_ds_flag_overrides_brief(ds_root, tmp_path, monkeypatch):
 
     def fake_plan_with_repair(brief, ds, target, planner, out_path, **kw):
         captured["ds_spec"] = ds.spec
-        return RenderResult(path=out_path, duration_ms=1, blocks_rendered=1)
+        composition = {
+            "schema": "bindery/v1", "design_system": ds.spec,
+            "target": target, "blocks": [],
+        }
+        return RenderResult(path=out_path, duration_ms=1, blocks_rendered=1), composition
 
     monkeypatch.setattr(cli, "plan_with_repair", fake_plan_with_repair)
 
