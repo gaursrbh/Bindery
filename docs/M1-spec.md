@@ -55,8 +55,14 @@ class OllamaPlanner:
     def __init__(self, config: PlannerConfig = PlannerConfig()): ...
     def plan(self, brief, ds, target, *, repair=None) -> dict:
         """POST {base_url}/api/generate via stdlib urllib (no new dependency),
-        format=ds.effective_schemas[target] (schema-constrained decoding,
-        issue #2's structural guarantee). System prompt built from
+        format=_flatten_for_ollama(ds.effective_schemas[target]) (schema-
+        constrained decoding, issue #2's structural guarantee). Ollama's
+        format-schema compiler cannot resolve M0's external
+        `$ref: "core.schema.json"` (only local `#/$defs/...` refs work) —
+        discovered during implementation, not anticipated by this spec's
+        original drafting — so the envelope ref is inlined before the
+        request; local $defs refs for components are left as-is. System
+        prompt built from
         describe_components(ds, target) (§2.3). If `repair` is set, the user
         prompt appends: the RenderError/CompositionError message, the full
         prior composition JSON, and 'fix only the named block/prop; state a

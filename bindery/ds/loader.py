@@ -48,6 +48,7 @@ class DesignSystem:
     targets: list[str]
     effective_schemas: dict[str, dict] = field(default_factory=dict)
     layout_fns: dict[str, dict[str, Callable]] = field(default_factory=dict)
+    component_docs: dict[str, dict[str, str]] = field(default_factory=dict)
     path: Path = None  # type: ignore[assignment]
 
     @property
@@ -125,6 +126,34 @@ def _merge_overrides(base_vocab: dict, overrides: dict | None, target: str) -> d
             props_schema.setdefault("properties", {})[prop_name] = prop_schema
 
     return merged
+
+
+def _load_component_docs(ds_dir: Path, targets: list[str]) -> dict[str, dict[str, str]]:
+    """M1-spec.md §2.3: optional `description` field on overrides.json
+    components/extend_props entries -> DesignSystem.component_docs, kept
+    DS-agnostic (base-component docs live in bindery/planner/, not here)."""
+    overrides_path = ds_dir / "schema" / "overrides.json"
+    if not overrides_path.exists():
+        return {}
+    with open(overrides_path) as f:
+        overrides = json.load(f)
+
+    docs: dict[str, dict[str, str]] = {}
+    for target in targets:
+        target_overrides = overrides.get(target)
+        if not target_overrides:
+            continue
+        target_docs: dict[str, str] = {}
+        for comp_name, comp_spec in target_overrides.get("components", {}).items():
+            if "description" in comp_spec:
+                target_docs[comp_name] = comp_spec["description"]
+        for comp_name, extra in target_overrides.get("extend_props", {}).items():
+            for prop_name, prop_schema in extra.get("optional", {}).items():
+                if "description" in prop_schema:
+                    target_docs[f"{comp_name}.{prop_name}"] = prop_schema["description"]
+        if target_docs:
+            docs[target] = target_docs
+    return docs
 
 
 def _load_effective_schemas(ds_dir: Path, targets: list[str]) -> dict[str, dict]:
@@ -244,6 +273,7 @@ def load(name_or_spec: str, root: Path = Path("design-systems")) -> DesignSystem
 
     effective_schemas = _load_effective_schemas(ds_dir, system["targets"])
     layout_fns = _load_layout_fns(ds_dir, effective_schemas)
+    component_docs = _load_component_docs(ds_dir, system["targets"])
 
     return DesignSystem(
         name=system["name"],
@@ -252,6 +282,7 @@ def load(name_or_spec: str, root: Path = Path("design-systems")) -> DesignSystem
         targets=system["targets"],
         effective_schemas=effective_schemas,
         layout_fns=layout_fns,
+        component_docs=component_docs,
         path=ds_dir,
     )
 
