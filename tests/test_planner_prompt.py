@@ -2,7 +2,7 @@ import json
 
 from bindery.ds.loader import load
 from bindery.planner.components import describe_components
-from bindery.planner.ollama import _build_system_prompt
+from bindery.planner.prompts import build_system_prompt as _build_system_prompt
 
 
 def test_describe_components_base_only(ds_root):

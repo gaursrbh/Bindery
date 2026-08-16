@@ -13,6 +13,7 @@ from bindery import library, lock as lock_module
 from bindery.ds import loader
 from bindery.ds.errors import DesignSystemError
 from bindery.lint import lint as lint_dispatch
+from bindery.planner.claude_cli import ClaudeCliConfig, ClaudeCliPlanner
 from bindery.planner.errors import PlannerError
 from bindery.planner.ollama import OllamaPlanner, PlannerConfig
 from bindery.planner.repair import plan_with_repair
@@ -84,8 +85,14 @@ def _plan(args: argparse.Namespace) -> int:
     if constraints:
         brief_text += f"\n\nConstraints:\n{yaml.safe_dump(constraints)}"
 
-    config = PlannerConfig(model=args.model) if args.model else PlannerConfig()
-    planner = OllamaPlanner(config)
+    if args.planner == "claude-cli":
+        cli_config = ClaudeCliConfig(model=args.model) if args.model else ClaudeCliConfig()
+        planner = ClaudeCliPlanner(cli_config)
+        model_name, seed = cli_config.model, None
+    else:
+        config = PlannerConfig(model=args.model) if args.model else PlannerConfig()
+        planner = OllamaPlanner(config)
+        model_name, seed = config.model, config.seed
 
     out_path = Path(args.out) / f"{brief_path.stem}.{extension_for(target)}"
 
@@ -106,7 +113,7 @@ def _plan(args: argparse.Namespace) -> int:
 
     _bind(
         ds, ds.spec, target, composition, result.path,
-        models={"planner": config.model}, seed=config.seed,
+        models={"planner": model_name}, seed=seed,
     )
     print(str(result.path))
     return 0
@@ -238,6 +245,7 @@ def build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--ds", default=None)
     plan.add_argument("--target", default=None)
     plan.add_argument("--model", default=None)
+    plan.add_argument("--planner", choices=["ollama", "claude-cli"], default="ollama")
     plan.add_argument("--out", required=True)
     plan.add_argument("--ds-root", default="design-systems")
     plan.set_defaults(func=_plan)
