@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from bindery.ds.loader import DesignSystem
+from bindery.lint import html_slides as _html_slides
 from bindery.lint import pptx as _pptx
 from bindery.lint import web as _web
 
@@ -17,7 +18,7 @@ class LintViolation:
     value: str
 
 
-_LINTERS = {"pptx": _pptx.lint, "web": _web.lint}
+_LINTERS = {"pptx": _pptx.lint, "web": _web.lint, "html-slides": _html_slides.lint}
 
 
 def allowed_values(ds: DesignSystem) -> set[str]:

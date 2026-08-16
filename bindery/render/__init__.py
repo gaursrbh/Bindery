@@ -5,13 +5,19 @@ from __future__ import annotations
 from pathlib import Path
 
 from bindery.ds.loader import DesignSystem
+from bindery.render import html_slides as _html_slides
 from bindery.render import infographic as _infographic
 from bindery.render import pptx as _pptx
 from bindery.render import web as _web
 
-_EXTENSIONS = {"pptx": "pptx", "web": "html", "infographic": "svg"}
+_EXTENSIONS = {"pptx": "pptx", "web": "html", "infographic": "svg", "html-slides": "html"}
 
-_RENDERERS = {"pptx": _pptx.render, "web": _web.render, "infographic": _infographic.render}
+_RENDERERS = {
+    "pptx": _pptx.render,
+    "web": _web.render,
+    "infographic": _infographic.render,
+    "html-slides": _html_slides.render,
+}
 
 
 def extension_for(target: str) -> str:

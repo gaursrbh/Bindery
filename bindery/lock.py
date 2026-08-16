@@ -11,7 +11,12 @@ from pathlib import Path
 _EXCLUDED_DIRS = {"node_modules"}
 _EXCLUDED_FILES = {".bindery-entry.jsx", "tokens.css"}
 
-RENDERER_VERSIONS = {"pptx": "pptx@0.1.0", "web": "web@0.1.0", "infographic": "infographic@0.1.0"}
+RENDERER_VERSIONS = {
+    "pptx": "pptx@0.1.0",
+    "web": "web@0.1.0",
+    "infographic": "infographic@0.1.0",
+    "html-slides": "html-slides@0.1.0",
+}
 
 
 def hash_design_system(ds_path: Path) -> str:

@@ -8,7 +8,7 @@ def test_load_reference_ds(ds_root):
     ds = loader.load("reference", root=ds_root)
     assert ds.name == "reference"
     assert ds.version == "1.0.0"
-    assert ds.targets == ["pptx", "web", "infographic"]
+    assert ds.targets == ["pptx", "web", "infographic", "html-slides"]
     assert set(ds.layout_fns["pptx"]) == {
         "title",
         "stat-trio",
