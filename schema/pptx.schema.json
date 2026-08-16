@@ -104,7 +104,8 @@
           "properties": {
             "asset": { "type": "string", "maxLength": 100 },
             "caption": { "type": "string", "maxLength": 100 },
-            "accent": { "enum": ["primary", "secondary", "neutral"] }
+            "accent": { "enum": ["primary", "secondary", "neutral"] },
+            "image_path": { "type": "string", "maxLength": 500 }
           }
         }
       }

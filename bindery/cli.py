@@ -237,6 +237,25 @@ def _import(args: argparse.Namespace) -> int:
     return 0
 
 
+def _diagram(args: argparse.Namespace) -> int:
+    from bindery.diagram_design import DiagramDesignError, generate_diagram
+
+    try:
+        ds = loader.load(args.ds, root=Path(args.ds_root))
+    except DesignSystemError as e:
+        print(str(e), file=sys.stderr)
+        return 2
+
+    try:
+        result = generate_diagram(args.type, args.description, ds.tokens, Path(args.out))
+    except DiagramDesignError as e:
+        print(str(e), file=sys.stderr)
+        return 8
+
+    print(str(result.svg_path))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="bindery")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -298,6 +317,17 @@ def build_parser() -> argparse.ArgumentParser:
     import_cmd.add_argument("source", help="Path to an existing .pptx deck, or an http(s):// URL")
     import_cmd.add_argument("--out", required=True)
     import_cmd.set_defaults(func=_import)
+
+    diagram = subparsers.add_parser(
+        "diagram",
+        help="Generate a diagram via the diagram-design skill subprocess (issues #52-56)",
+    )
+    diagram.add_argument("type", help="One of the 27 diagram-design visual types, e.g. 'venn', 'flowchart'")
+    diagram.add_argument("description", help="What the diagram should show")
+    diagram.add_argument("--ds", required=True)
+    diagram.add_argument("--ds-root", default="design-systems")
+    diagram.add_argument("--out", required=True)
+    diagram.set_defaults(func=_diagram)
 
     return parser
 
