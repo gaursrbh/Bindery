@@ -1,0 +1,5 @@
+name: reference
+version: 1.0.0
+description: M0 reference design system (loader/renderer smoke-test DS, ported from spike/tokens.json)
+targets:
+  - pptx
