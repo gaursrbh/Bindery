@@ -1,0 +1,196 @@
+[
+  {
+    "id": "q3-board-update",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 26.26332712173462,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Q3 Program Performance Update\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"142,300\",\n            \"label\": \"Enrollment\",\n            \"delta\": \"+12%\"\n          },\n          {\n            \"value\": \"$412\",\n            \"label\": \"Cost per Member\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"94.2%\",\n            \"label\": \"Retention\",\n            \"delta\": \"+1.4pt\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Enrollment trend: steady growth with a 12% increase\",\n          \"Cost per member remains stable at $412\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"enrollment-trend-chart\",\n        \"caption\": \"Enrollment trend over the past quarters\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "product-launch-recap",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 23.812988996505737,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"March Product Launch Recap\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"40k\",\n            \"label\": \"Signups in Week 1\",\n            \"delta\": \"+20%\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Press Mentions\",\n            \"delta\": \"+1\"\n          },\n          {\n            \"value\": \"61\",\n            \"label\": \"NPS\",\n            \"delta\": \"+5\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Successfully onboarded 40,000 users in the first week\",\n          \"Received positive press coverage with 3 mentions\",\n          \"Customer satisfaction measured at an NPS of 61\"\n        ],\n        \"heading\": \"Key Highlights\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"launch-event.jpg\",\n        \"caption\": \"Celebrating the launch with the team\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "risk-summary",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "stat-trio used but brief has no numeric source content"
+    ],
+    "elapsed": 24.011330127716064,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Quarterly Risk Review\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"1\",\n            \"label\": \"Critical Risk\",\n            \"delta\": \"Vendor Con\"\n          },\n          {\n            \"value\": \"2\",\n            \"label\": \"High Risk\",\n            \"delta\": \"On-Call\"\n          },\n          {\n            \"value\": \"1\",\n            \"label\": \"Medium Risk\",\n            \"delta\": \"Failover\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Vendor concentration: Risk of supply chain disruption\",\n          \"On-call fatigue: Risk of reduced responsiveness\",\n          \"Single-region failover gap: Risk of service disruption\",\n          \"Unpatched CVE backlog: Risk of security breach\"\n        ],\n        \"heading\": \"Top Operational Risks\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"vendor-concentration\",\n        \"caption\": \"Vendor Concentration Risk\",\n        \"accent\": \"secondary\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "customer-story",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 22.818758010864258,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Customer Success Story\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"6 weeks\",\n            \"label\": \"Original Onboarding Time\",\n            \"delta\": \"-2 weeks, \"},\n          {\n            \"value\": \"4 days\",\n            \"label\": \"New Onboarding Time\",\n            \"delta\": \"+2 weeks, \"\n          },\n          {\n            \"value\": \"92%\",\n            \"label\": \"Time Saved\",\n            \"delta\": \"+\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Cut onboarding time from 6 weeks to 4 days\",\n          \"Improved efficiency and productivity\",\n          \"Enhanced customer satisfaction\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/customer-logo.png\",\n        \"caption\": \"Customer Logo\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "hiring-plan",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "missing must_include: 'engineering headcount'"
+    ],
+    "elapsed": 23.114933967590332,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"H2 Hiring Plan\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"+8\",\n            \"label\": \"Engineering\",\n            \"delta\": \"+8\"\n          },\n          {\n            \"value\": \"+5\",\n            \"label\": \"Sales\",\n            \"delta\": \"+5\"\n          },\n          {\n            \"value\": \"+3\",\n            \"label\": \"Support\",\n            \"delta\": \"+3\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Backlog growth necessitates additional engineering resources\",\n          \"Pipeline expansion requires more sales personnel\",\n          \"Customer support needs increase due to product adoption\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"pipeline-growth-chart.png\",\n        \"caption\": \"Illustration of pipeline growth driving hiring needs\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "incident-postmortem",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "missing must_include: 'root cause count'"
+    ],
+    "elapsed": 27.271952867507935,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"March 12 Outage Postmortem\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"47 min\",\n            \"label\": \"Downtime Duration\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Root Causes\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"22%\",\n            \"label\": \"MTTR Improvement vs Prior\",\n            \"delta\": \"+22%\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Action Item 1: Improve monitoring\",\n          \"Action Item 2: Enhance redundancy\",\n          \"Action Item 3: Conduct regular drills\",\n          \"Action Item 4: Update incident response plan\",\n          \"Action Item 5: Increase team training\",\n          \"Action Item 6: Implement automated recovery\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"incident_timeline.png\",\n        \"caption\": \"Timeline of the March 12 Incident\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "sales-pipeline-review",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 24.806162118911743,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Weekly Sales Pipeline Snapshot\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"214\",\n            \"label\": \"Open Deals\",\n            \"delta\": \"+9\"\n          },\n          {\n            \"value\": \"$3.2M\",\n            \"label\": \"Weighted Value\",\n            \"delta\": \"+4%\"\n          },\n          {\n            \"value\": \"27%\",\n            \"label\": \"Win Rate\",\n            \"delta\": \"-2pt\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Review of open deals and their progress\",\n          \"Analysis of weighted value changes\",\n          \"Discussion on win rate trends and strategies\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"pipeline-chart.png\",\n        \"caption\": \"Current Pipeline Status\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "engineering-roadmap-q4",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 25.010998964309692,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Engineering Roadmap for Q4\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"1\",\n            \"label\": \"Platform Migration\",\n            \"delta\": \"\"\n          },\n          {\n            \"value\": \"2\",\n            \"label\": \"Mobile Offline Mode\",\n            \"delta\": \"\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Billing V2\",\n            \"delta\": \"\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Platform Migration\",\n          \"Mobile Offline Mode\",\n          \"Billing V2\",\n          \"On-Call Tooling Overhaul\"\n        ],\n        \"heading\": \"Top Four Engineering Roadmap Bets for Q4\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"engineering-roadmap\",\n        \"caption\": \"Preview of the top four engineering roadmap bets for Q4\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "onboarding-checklist",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "stat-trio used but brief has no numeric source content"
+    ],
+    "elapsed": 25.130286931991577,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Week One Onboarding Checklist\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"1\",\n            \"label\": \"Week\",\n            \"delta\": \"primary\"\n          },\n          {\n            \"value\": \"5\",\n            \"label\": \"Tasks\",\n            \"delta\": \"secondary\"\n          },\n          {\n            \"value\": \"1\",\n            \"label\": \"Manager Meeting\",\n            \"delta\": \"neutral\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Set up laptop\",\n          \"Complete security training\",\n          \"Meet your manager\",\n          \"Shadow a teammate\",\n          \"Join team standup\"\n        ],\n        \"heading\": \"Your Tasks for Week One\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"onboarding-welcome\",\n        \"caption\": \"Welcome to the team!\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "marketing-campaign-results",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 23.809048175811768,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Spring Email Campaign Results\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"38%\",\n            \"label\": \"Open Rate\",\n            \"delta\": \"+6pt\"\n          },\n          {\n            \"value\": \"5.1%\",\n            \"label\": \"Click Rate\",\n            \"delta\": \"+1.2pt\"\n          },\n          {\n            \"value\": \"812\",\n            \"label\": \"Conversions\",\n            \"delta\": \"+140\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Overall positive trend in engagement metrics\",\n          \"Significant increase in conversions\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"campaign-graph.png\",\n        \"caption\": \"Graph showing the growth in conversions over the campaign period\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "partner-announcement",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "stat-trio used but brief has no numeric source content"
+    ],
+    "elapsed": 24.938951015472412,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"New Partnership Announcement\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"Northwind\",\n            \"label\": \"Partner Name\",\n            \"delta\": \"New\"\n          },\n          {\n            \"value\": \"Next Month\",\n            \"label\": \"Launch Date\",\n            \"delta\": \"Coming\"\n          },\n          {\n            \"value\": \"Integration\",\n            \"label\": \"Type\",\n            \"delta\": \"Full\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/northwind-logo.png\",\n        \"caption\": \"Northwind Logistics\",\n        \"accent\": \"neutral\"\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Exciting new partnership with Northwind Logistics\",\n          \"Full integration to be launched next month\",\n          \"Look out for more updates soon!\"\n        ],\n        \"heading\": \"Key Points\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "budget-variance-report",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 25.66015076637268,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Q1 Budget Variance Report\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"$4.8M\",\n            \"label\": \"Actual Spend\",\n            \"delta\": \"+7%\"\n          },\n          {\n            \"value\": \"$4.5M\",\n            \"label\": \"Planned Spend\",\n            \"delta\": \"\"\n          },\n          {\n            \"value\": \"+3\",\n            \"label\": \"Headcount Variance\",\n            \"delta\": \"\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Spend variance of +7% with actual spend at $4.8M vs planned $4.5M\",\n          \"Headcount variance of +3\",\n          \"Largest overage: cloud infrastructure\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"cloud-infrastructure\",\n        \"caption\": \"Largest overage: cloud infrastructure\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "security-posture-update",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 24.62035608291626,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Security Posture Update\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"0\",\n            \"label\": \"Critical Incidents\",\n            \"delta\": \"0% change\"\n          },\n          {\n            \"value\": \"92%\",\n            \"label\": \"Critical CVEs Patched WithinSL\",\n            \"delta\": \"+2% from Q\"\n          },\n          {\n            \"value\": \"3.1%\",\n            \"label\": \"Phishing Test Click Rate\",\n            \"delta\": \"-0.5% from\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Quarterly review of security posture\",\n          \"Highlight of critical incidents and trends\",\n          \"Summary of phishing test results\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"security-dashboard.png\",\n        \"caption\": \"Current Security Dashboard Overview\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "team-retro-highlights",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "stat-trio used but brief has no numeric source content"
+    ],
+    "elapsed": 25.44582509994507,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Quarterly Retro Highlights\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"Faster Ship\",\n            \"label\": \"Smaller PRs\",\n            \"delta\": \"Positive\"\n          },\n          {\n            \"value\": \"Uneven\",\n            \"label\": \"On-Call Load\",\n            \"delta\": \"Negative\"\n          },\n          {\n            \"value\": \"Lagging\",\n            \"label\": \"Docs vs Code\",\n            \"delta\": \"Negative\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Team shipped faster with smaller PRs\",\n          \"On-call load unevenly distributed\",\n          \"Documentation still lagging behind code\",\n          \"Desire for more pairing sessions\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"team-photo\",\n        \"caption\": \"Our team working together\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "product-metrics-dashboard-recap",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 25.502368927001953,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Monthly Product Metrics Recap\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"58,200\",\n            \"label\": \"DAU\",\n            \"delta\": \"+3%\"\n          },\n          {\n            \"value\": \"41%\",\n            \"label\": \"Activation Rate\",\n            \"delta\": \"-1pt\"\n          },\n          {\n            \"value\": \"2.4%\",\n            \"label\": \"Churn\",\n            \"delta\": \"0\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"DAU increased by 3%\",\n          \"Activation rate decreased by 1 percentage point\",\n          \"Churn rate remained stable\"\n        ],\n        \"heading\": \"Key Metrics Summary\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"metrics-chart.png\",\n        \"caption\": \"Monthly Metrics Overview\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "event-recap-conference",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 26.635910987854004,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Event Recap: Company Booth at Trade Conference\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"1,200\",\n            \"label\": \"Booth Visitors\",\n            \"delta\": \"+20%\"\n          },\n          {\n            \"value\": \"340\",\n            \"label\": \"Demo Signups\",\n            \"delta\": \"+30%\"\n          },\n          {\n            \"value\": \"High\",\n            \"label\": \"Engagement Level\",\n            \"delta\": \"+25%\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Successfully showcased our latest product line\",\n          \"Generated significant interest among key industry players\",\n          \"Collected valuable feedback for future product development\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/booth-photo.png\",\n        \"caption\": \"Our booth at the trade conference\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "legal-compliance-update",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 25.625492334365845,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Legal Compliance Update\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"SOC2 renewal\",\n            \"label\": \"In Progress\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"GDPR DPA\",\n            \"label\": \"Backlog Cleared\",\n            \"delta\": \"100%\"\n          },\n          {\n            \"value\": \"Vendor Asses\",\n            \"label\": \"Overdue\",\n            \"delta\": \"2\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"SOC2 renewal in progress\",\n          \"GDPR DPA backlog cleared\",\n          \"Two vendor assessments overdue\",\n          \"Pen test scheduled for next month\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"placeholder-image\",\n        \"caption\": \"Compliance Certification Status\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "customer-support-kpis",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 26.558377027511597,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Customer Support KPIs Snapshot\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"4.2h\",\n            \"label\": \"First Response Time\",\n            \"delta\": \"-1.1h\"\n          },\n          {\n            \"value\": \"92%\",\n            \"label\": \"CSAT\",\n            \"delta\": \"+2pt\"\n          },\n          {\n            \"value\": \"118\",\n            \"label\": \"Ticket Backlog\",\n            \"delta\": \"-40\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"First Response Time improved by 1.1 hours\",\n          \"CSAT increased by 2 percentage points\",\n          \"Ticket backlog reduced by 40 tickets\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"customer-support-team.jpg\",\n        \"caption\": \"Our dedicated customer support team\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "fundraising-progress",
+    "schema_valid": true,
+    "sensible": false,
+    "error": null,
+    "notes": [
+      "placeholder value: 'placeholder'"
+    ],
+    "elapsed": 25.11066198348999,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Series B Fundraising Progress\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"14\",\n            \"label\": \"Investor Meetings\",\n            \"delta\": \"0\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Term Sheets in Discussion\",\n            \"delta\": \"0\"\n          },\n          {\n            \"value\": \"End of Next\",\n            \"label\": \"Target Close\",\n            \"delta\": \"Q\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"14 investor meetings held\",\n          \"3 term sheets in discussion\",\n          \"Target close by end of next quarter\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"placeholder\",\n        \"caption\": \"Series B Fundraising Progress\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "office-move-announcement",
+    "schema_valid": true,
+    "sensible": true,
+    "error": null,
+    "notes": [],
+    "elapsed": 27.934125900268555,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"New Office Location Announcement\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"500 Market\",\n            \"label\": \"Address\",\n            \"delta\": \"New Office\"\n          },\n          {\n            \"value\": \"June 3\",\n            \"label\": \"Move Date\",\n            \"delta\": \"\"\n          },\n          {\n            \"value\": \"assets/new-\",\n            \"label\": \"Photo\",\n            \"delta\": \"new-office\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Welcome to our new office space!\",\n          \"Moving date is set for June 3rd\",\n          \"Check out the photo of our new location\"\n        ],\n        \"heading\": \"Important Dates and Details\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/new-office.png\",\n        \"caption\": \"Our new office space at 500 Market St\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  }
+]
