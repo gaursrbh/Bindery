@@ -31,6 +31,12 @@
         <option value="infographic">infographic</option>
       </select>
     </label>
+    <label>Planner backend
+      <select id="planner">
+        <option value="ollama">Ollama (local, free)</option>
+        <option value="claude-cli">Claude Code CLI (subscription-billed)</option>
+      </select>
+    </label>
     <label>Brief
       <textarea id="intent" placeholder="Board update on Q3 program performance..."></textarea>
     </label>
@@ -63,11 +69,15 @@ async function loadArtifacts() {
 document.getElementById('plan-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const status = document.getElementById('status');
-  status.textContent = 'Planning (this calls a local model, can take up to a minute)...';
+  const planner = document.getElementById('planner').value;
+  status.textContent = planner === 'claude-cli'
+    ? 'Planning via Claude Code CLI (subscription-billed)...'
+    : 'Planning (local Ollama model, can take up to a minute)...';
   const body = {
     intent: document.getElementById('intent').value,
     target: document.getElementById('target').value,
     design_system: document.getElementById('ds').value,
+    planner: planner,
   };
   try {
     const res = await fetch('/plan', {

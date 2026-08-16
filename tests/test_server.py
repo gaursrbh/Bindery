@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 
+import bindery.server as server_module
 from bindery.server import create_app
 
 
@@ -68,3 +69,27 @@ def test_frontend_served(ds_root, tmp_path):
     res = client.get("/")
     assert res.status_code == 200
     assert "Bindery" in res.text
+    assert "claude-cli" in res.text  # planner selector present
+
+
+def test_plan_with_claude_cli_planner(ds_root, tmp_path, monkeypatch):
+    client, out_dir = _client(ds_root, tmp_path)
+
+    class FakePlanner:
+        def __init__(self, config):
+            self.config = config
+
+        def plan(self, brief, ds, target, *, repair=None):
+            return {
+                "schema": "bindery/v1", "design_system": ds.spec, "target": target,
+                "blocks": [{"component": "title", "props": {"headline": "Q3 update"}}],
+            }
+
+    monkeypatch.setattr(server_module, "ClaudeCliPlanner", FakePlanner)
+
+    res = client.post("/plan", json={
+        "intent": "Q3 update", "target": "pptx",
+        "design_system": "reference@1.0.0", "planner": "claude-cli",
+    })
+    assert res.status_code == 200
+    assert res.json()["design_system"] == "reference@1.0.0"
