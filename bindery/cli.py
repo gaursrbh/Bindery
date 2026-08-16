@@ -217,15 +217,22 @@ def _serve(args: argparse.Namespace) -> int:
 
 
 def _import(args: argparse.Namespace) -> int:
-    from bindery.importer import scan_pptx, write_candidate
+    import json as _json
 
-    deck_path = Path(args.deck)
-    report = scan_pptx(deck_path)
+    from bindery.importer import candidate_tokens, scan_pptx, scan_website
+
+    source = args.source
+    is_url = source.startswith("http://") or source.startswith("https://")
+    report = scan_website(source) if is_url else scan_pptx(Path(source))
+
     print(f"colors seen: {dict(report.colors.most_common())}", file=sys.stderr)
     print(f"sizes seen: {dict(report.sizes.most_common())}", file=sys.stderr)
     print(f"fonts seen: {dict(report.fonts.most_common())}", file=sys.stderr)
 
-    out_path = write_candidate(deck_path, Path(args.out))
+    out_dir = Path(args.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "candidate-tokens.json"
+    out_path.write_text(_json.dumps(candidate_tokens(report), indent=2))
     print(str(out_path))
     return 0
 
@@ -288,7 +295,7 @@ def build_parser() -> argparse.ArgumentParser:
     import_cmd = subparsers.add_parser(
         "import", help="Extract a candidate tokens.json from an existing .pptx deck"
     )
-    import_cmd.add_argument("deck")
+    import_cmd.add_argument("source", help="Path to an existing .pptx deck, or an http(s):// URL")
     import_cmd.add_argument("--out", required=True)
     import_cmd.set_defaults(func=_import)
 
