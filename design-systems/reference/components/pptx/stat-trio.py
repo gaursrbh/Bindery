@@ -7,12 +7,15 @@ def _hexcolor(tokens, name):
     return RGBColor.from_string(tokens["color"][name]["value"].lstrip("#"))
 
 
-def layout(slide, props: dict, tokens: dict) -> None:
+_HEIGHT_IN = 1.6
+
+
+def layout(slide, props: dict, tokens: dict, y: float = 2.6) -> float:
     stats = props["stats"]
     col_width = Inches(3.0)
     for i, stat in enumerate(stats):
         left = Inches(0.6) + i * col_width
-        box = slide.shapes.add_textbox(left, Inches(2.6), col_width - Inches(0.2), Inches(2))
+        box = slide.shapes.add_textbox(left, Inches(y), col_width - Inches(0.2), Inches(_HEIGHT_IN))
         tf = box.text_frame
         tf.word_wrap = True
         p_val = tf.paragraphs[0]
@@ -31,3 +34,5 @@ def layout(slide, props: dict, tokens: dict) -> None:
             p_delta.text = stat["delta"]
             p_delta.font.size = Pt(int(tokens["typography"]["stat-label-size"]["value"]))
             p_delta.font.color.rgb = _hexcolor(tokens, "secondary")
+
+    return _HEIGHT_IN + 0.2

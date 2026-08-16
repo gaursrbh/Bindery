@@ -7,8 +7,10 @@ def _hexcolor(tokens, name):
     return RGBColor.from_string(tokens["color"][name]["value"].lstrip("#"))
 
 
-def layout(slide, props: dict, tokens: dict) -> None:
-    box = slide.shapes.add_textbox(Inches(0.6), Inches(2.4), Inches(9), Inches(3))
+def layout(slide, props: dict, tokens: dict, y: float = 2.4) -> float:
+    n_lines = len(props["items"]) + (1 if "heading" in props else 0)
+    height_in = min(3.5, 0.3 * n_lines + 0.3)
+    box = slide.shapes.add_textbox(Inches(0.6), Inches(y), Inches(9), Inches(height_in))
     tf = box.text_frame
     tf.word_wrap = True
 
@@ -27,3 +29,5 @@ def layout(slide, props: dict, tokens: dict) -> None:
         p.text = f"• {item}"
         p.font.size = Pt(int(tokens["typography"]["stat-label-size"]["value"]))
         p.font.color.rgb = _hexcolor(tokens, "text")
+
+    return height_in + 0.2
