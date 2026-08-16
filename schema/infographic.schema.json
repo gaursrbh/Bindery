@@ -11,7 +11,15 @@
           "items": {
             "oneOf": [
               { "$ref": "#/$defs/title" },
-              { "$ref": "#/$defs/statCallout" }
+              { "$ref": "#/$defs/statCallout" },
+              { "$ref": "#/$defs/linearProgression" },
+              { "$ref": "#/$defs/binaryComparison" },
+              { "$ref": "#/$defs/comparisonMatrix" },
+              { "$ref": "#/$defs/hierarchicalLayers" },
+              { "$ref": "#/$defs/hubSpoke" },
+              { "$ref": "#/$defs/funnel" },
+              { "$ref": "#/$defs/vennDiagram" },
+              { "$ref": "#/$defs/circularFlow" }
             ]
           }
         }
@@ -51,6 +59,208 @@
             "value": { "type": "string", "maxLength": 12 },
             "label": { "type": "string", "maxLength": 40 },
             "accent": { "enum": ["primary", "secondary", "neutral"] }
+          }
+        }
+      }
+    },
+    "linearProgression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "linear-progression" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["steps"],
+          "properties": {
+            "steps": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label"],
+                "properties": {
+                  "label": { "type": "string", "maxLength": 30 },
+                  "detail": { "type": "string", "maxLength": 60 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "binaryComparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "binary-comparison" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["left_label", "left_items", "right_label", "right_items"],
+          "properties": {
+            "left_label": { "type": "string", "maxLength": 30 },
+            "left_items": {
+              "type": "array", "minItems": 1, "maxItems": 5,
+              "items": { "type": "string", "maxLength": 60 }
+            },
+            "right_label": { "type": "string", "maxLength": 30 },
+            "right_items": {
+              "type": "array", "minItems": 1, "maxItems": 5,
+              "items": { "type": "string", "maxLength": 60 }
+            }
+          }
+        }
+      }
+    },
+    "comparisonMatrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "comparison-matrix" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["columns", "rows"],
+          "properties": {
+            "columns": {
+              "type": "array", "minItems": 2, "maxItems": 4,
+              "items": { "type": "string", "maxLength": 20 }
+            },
+            "rows": {
+              "type": "array", "minItems": 2, "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "values"],
+                "properties": {
+                  "label": { "type": "string", "maxLength": 24 },
+                  "values": {
+                    "type": "array", "minItems": 2, "maxItems": 4,
+                    "items": { "type": "string", "maxLength": 16 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hierarchicalLayers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "hierarchical-layers" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["layers"],
+          "properties": {
+            "layers": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label"],
+                "properties": {
+                  "label": { "type": "string", "maxLength": 40 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "hubSpoke": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "hub-spoke" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hub", "spokes"],
+          "properties": {
+            "hub": { "type": "string", "maxLength": 30 },
+            "spokes": {
+              "type": "array", "minItems": 3, "maxItems": 8,
+              "items": { "type": "string", "maxLength": 24 }
+            }
+          }
+        }
+      }
+    },
+    "funnel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "funnel" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stages"],
+          "properties": {
+            "stages": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["label", "value"],
+                "properties": {
+                  "label": { "type": "string", "maxLength": 30 },
+                  "value": { "type": "string", "maxLength": 12 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "vennDiagram": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "venn-diagram" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["left_label", "right_label"],
+          "properties": {
+            "left_label": { "type": "string", "maxLength": 24 },
+            "right_label": { "type": "string", "maxLength": 24 },
+            "overlap_label": { "type": "string", "maxLength": 24 }
+          }
+        }
+      }
+    },
+    "circularFlow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "circular-flow" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stages"],
+          "properties": {
+            "stages": {
+              "type": "array", "minItems": 3, "maxItems": 8,
+              "items": { "type": "string", "maxLength": 24 }
+            }
           }
         }
       }
