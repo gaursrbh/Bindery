@@ -1,0 +1,44 @@
+[
+  {
+    "id": "q3-board-update",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.618641138076782,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"Board Update\",\n        \"headline\": \"Q3 Program Performance\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"142,300\",\n            \"label\": \"Enrollment\",\n            \"delta\": \"+12%\"\n          },\n          {\n            \"value\": \"$412\",\n            \"label\": \"Cost per member\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"94.2%\",\n            \"label\": \"Retention\",\n            \"delta\": \"+1.4pt\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"heading\": \"Key Takeaways\",\n        \"items\": [\n          \"Enrollment growth of 12% reflects continued program adoption\",\n          \"Cost per member held flat, indicating stable unit economics\",\n          \"Retention improved 1.4 points, signaling stronger member satisfaction\",\n          \"Overall performance supports continued investment in current strategy\"\n        ]\n      }\n    }\n  ]\n}\n"
+  },
+  {
+    "id": "product-launch-recap",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.7985310554504395,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"March Launch Recap\",\n        \"headline\": \"A Strong Launch, Loud and Clear\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\"value\": \"40k\", \"label\": \"Signups in Week 1\", \"delta\": \"+40k\"},\n          {\"value\": \"3\", \"label\": \"Press Mentions\"},\n          {\"value\": \"61\", \"label\": \"NPS Score\"}\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"heading\": \"Key Takeaways\",\n        \"items\": [\n          \"Week 1 signups of 40k exceeded expectations, signaling strong market demand\",\n          \"Positive press coverage across 3 major outlets amplified launch visibility\",\n          \"NPS of 61 reflects highly satisfied early adopters\",\n          \"Momentum sets a solid foundation for Q2 growth initiatives\"\n        ]\n      }\n    }\n  ]\n}\n"
+  },
+  {
+    "id": "risk-summary",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.193451881408691,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"Quarterly Risk Review\",\n        \"headline\": \"Top Operational Risks Requiring Attention\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"heading\": \"Key Risk Areas\",\n        \"items\": [\n          \"Vendor concentration: heavy reliance on a small number of critical suppliers increases exposure to disruption\",\n          \"On-call fatigue: sustained incident load is straining engineering response capacity\",\n          \"Single-region failover gap: lack of multi-region redundancy risks extended outages\",\n          \"Unpatched CVE backlog: accumulating known vulnerabilities elevate security exposure\"\n        ]\n      }\n    }\n  ]\n}\n"
+  },
+  {
+    "id": "customer-story",
+    "ok": true,
+    "error": null,
+    "elapsed": 5.637488126754761,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"Customer Success Story\",\n        \"headline\": \"From 6 Weeks to 4 Days: A Faster Path to Value\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"6 wks\",\n            \"label\": \"Previous onboarding time\"\n          },\n          {\n            \"value\": \"4 days\",\n            \"label\": \"New onboarding time\",\n            \"delta\": \"-90%\"\n          },\n          {\n            \"value\": \"10x\",\n            \"label\": \"Faster time to value\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"heading\": \"Why It Worked\",\n        \"items\": [\n          \"Streamlined setup workflows eliminated manual handoffs\",\n          \"Automated data migration cut integration delays\",\n          \"Dedicated success team accelerated adoption\",\n          \"Self-serve configuration reduced dependency on IT\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/customer-logo.png\",\n        \"caption\": \"Trusted by fast-growing teams to onboard in days, not weeks\",\n        \"accent\": \"secondary\"\n      }\n    }\n  ]\n}\n"
+  },
+  {
+    "id": "hiring-plan",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.900703191757202,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"H2 Hiring Plan\",\n        \"headline\": \"Targeted Headcount Growth to Support Demand\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"+8\",\n            \"label\": \"Engineering headcount\",\n            \"delta\": \"+8\"\n          },\n          {\n            \"value\": \"+5\",\n            \"label\": \"Sales headcount\",\n            \"delta\": \"+5\"\n          },\n          {\n            \"value\": \"+3\",\n            \"label\": \"Support headcount\",\n            \"delta\": \"+3\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"heading\": \"Rationale\",\n        \"items\": [\n          \"Engineering: additional capacity needed to clear growing backlog\",\n          \"Sales: expanding team to capture accelerating pipeline growth\",\n          \"Support: scaling to maintain service levels as customer base grows\",\n          \"Plan reflects measured, demand-driven investment across functions\"\n        ]\n      }\n    }\n  ]\n}\n"
+  },
+  {
+    "id": "incident-postmortem",
+    "ok": false,
+    "error": "schema violation: {'component': 'bullet-list', 'heading_note': 'n/a', 'props': {'heading': 'Next Steps', 'items': ['Complete all 6 action items from the postmortem', 'Assign owners and target dates for each remediation task', 'Review monitoring thresholds tied to root cause 1', 'Validate failover procedure tied to root cause 2', 'Update on-call runbook to reflect root cause 3 findings', 'Schedule follow-up review in 30 days to confirm closure']}} is not valid under any of the given schemas",
+    "elapsed": 5.239332914352417,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"eyebrow\": \"Incident Postmortem\",\n        \"headline\": \"March 12 Outage: Summary and Next Steps\",\n        \"accent\": \"neutral\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"47 min\",\n            \"label\": \"Total downtime\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Root causes identified\"\n          },\n          {\n            \"value\": \"22%\",\n            \"label\": \"MTTR improvement\",\n            \"delta\": \"+22%\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"heading_note\": \"n/a\",\n      \"props\": {\n        \"heading\": \"Next Steps\",\n        \"items\": [\n          \"Complete all 6 action items from the postmortem\",\n          \"Assign owners and target dates for each remediation task\",\n          \"Review monitoring thresholds tied to root cause 1\",\n          \"Validate failover procedure tied to root cause 2\",\n          \"Update on-call runbook to reflect root cause 3 findings\",\n          \"Schedule follow-up review in 30 days to confirm closure\"\n        ]\n      }\n    }\n  ]\n}\n"
+  }
+]

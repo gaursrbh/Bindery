@@ -1,0 +1,374 @@
+[
+  {
+    "id": "q3-board-update",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.807674884796143,
+    "raw": {
+      "blocks": [
+        {
+          "component": "title",
+          "props": {
+            "eyebrow": "Q3 Program Performance",
+            "headline": "Steady Growth with Disciplined Cost Management",
+            "accent": "primary"
+          }
+        },
+        {
+          "component": "stat-trio",
+          "props": {
+            "stats": [
+              {
+                "value": "142,300",
+                "label": "Enrollment",
+                "delta": "+12%"
+              },
+              {
+                "value": "$412",
+                "label": "Cost per Member",
+                "delta": "0%"
+              },
+              {
+                "value": "94.2%",
+                "label": "Retention",
+                "delta": "+1.4pt"
+              }
+            ]
+          }
+        },
+        {
+          "component": "bullet-list",
+          "props": {
+            "heading": "Key Takeaways",
+            "items": [
+              "Enrollment trend continues upward, up 12% quarter-over-quarter, reflecting strong program adoption",
+              "Cost per member held flat at $412, demonstrating continued cost discipline amid growth",
+              "Retention improved 1.4 points to 94.2%, indicating sustained member satisfaction",
+              "Combined trends support a stable, scalable growth trajectory heading into Q4"
+            ]
+          }
+        },
+        {
+          "component": "image-callout",
+          "props": {
+            "asset": "q3-enrollment-trend-chart",
+            "caption": "Enrollment growth outpacing cost per member, Q1-Q3",
+            "accent": "neutral"
+          }
+        }
+      ],
+      "design_system": "acme@2.1.0",
+      "schema": "bindery.pptx/v1"
+    }
+  },
+  {
+    "id": "product-launch-recap",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.912858963012695,
+    "raw": {
+      "schema": "bindery.pptx/v1",
+      "design_system": "acme@2.1.0",
+      "blocks": [
+        {
+          "component": "title",
+          "props": {
+            "eyebrow": "March Product Launch",
+            "headline": "A Standout Launch: Strong Momentum Out of the Gate",
+            "accent": "primary"
+          }
+        },
+        {
+          "component": "stat-trio",
+          "props": {
+            "stats": [
+              {
+                "value": "40K",
+                "label": "Signups in Week 1",
+                "delta": "+40K"
+              },
+              {
+                "value": "3",
+                "label": "Press Mentions",
+                "delta": "+3"
+              },
+              {
+                "value": "61",
+                "label": "NPS Score",
+                "delta": "Strong"
+              }
+            ]
+          }
+        },
+        {
+          "component": "bullet-list",
+          "props": {
+            "heading": "Why This Matters",
+            "items": [
+              "40,000 signups in the first week signals strong market demand",
+              "3 press mentions expanded brand visibility beyond paid channels",
+              "NPS of 61 reflects excellent early customer satisfaction",
+              "Momentum sets a strong foundation for Q2 growth initiatives"
+            ]
+          }
+        },
+        {
+          "component": "image-callout",
+          "props": {
+            "asset": "launch-dashboard-hero.png",
+            "caption": "Week 1 signup growth trending sharply upward",
+            "accent": "secondary"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "risk-summary",
+    "ok": false,
+    "error": "schema violation: Additional properties are not allowed ('composition' was unexpected)",
+    "elapsed": 5.500290155410767,
+    "raw": {
+      "composition": {
+        "schema": "bindery.pptx/v1",
+        "design_system": "acme@2.1.0",
+        "blocks": [
+          {
+            "component": "title",
+            "props": {
+              "eyebrow": "Quarterly Risk Review",
+              "headline": "Top Operational Risks Requiring Executive Attention",
+              "accent": "primary"
+            }
+          },
+          {
+            "component": "bullet-list",
+            "props": {
+              "heading": "Key Risk Areas",
+              "items": [
+                "Vendor concentration: heavy reliance on a small number of critical suppliers increases exposure to disruption",
+                "On-call fatigue: sustained incident load is straining engineering response capacity",
+                "Single-region failover gap: lack of multi-region redundancy threatens continuity during regional outages",
+                "Unpatched CVE backlog: accumulating known vulnerabilities elevate security risk"
+              ]
+            }
+          },
+          {
+            "component": "stat-trio",
+            "props": {
+              "stats": [
+                {
+                  "value": "4",
+                  "label": "Top risks identified",
+                  "delta": ""
+                },
+                {
+                  "value": "1",
+                  "label": "Region-dependent systems"
+                },
+                {
+                  "value": "TBD",
+                  "label": "CVE backlog count"
+                }
+              ]
+            }
+          },
+          {
+            "component": "image-callout",
+            "props": {
+              "asset": "risk-heatmap.png",
+              "caption": "Risk heatmap highlighting vendor concentration as a top-tier concern",
+              "accent": "secondary"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "customer-story",
+    "ok": true,
+    "error": null,
+    "elapsed": 5.3135600090026855,
+    "raw": {
+      "schema": "bindery.pptx/v1",
+      "design_system": "acme@2.1.0",
+      "blocks": [
+        {
+          "component": "title",
+          "props": {
+            "eyebrow": "Customer Success Story",
+            "headline": "From 6 Weeks to 4 Days: How Our Customer Transformed Onboarding",
+            "accent": "primary"
+          }
+        },
+        {
+          "component": "stat-trio",
+          "props": {
+            "stats": [
+              {
+                "value": "6 wks",
+                "label": "Previous onboarding time",
+                "delta": "before"
+              },
+              {
+                "value": "4 days",
+                "label": "New onboarding time",
+                "delta": "-90%"
+              },
+              {
+                "value": "10x",
+                "label": "Faster time-to-value",
+                "delta": "+10x"
+              }
+            ]
+          }
+        },
+        {
+          "component": "image-callout",
+          "props": {
+            "asset": "assets/customer-logo.png",
+            "caption": "Trusted by industry leaders to accelerate onboarding",
+            "accent": "neutral"
+          }
+        },
+        {
+          "component": "bullet-list",
+          "props": {
+            "heading": "Why It Matters",
+            "items": [
+              "Faster onboarding means faster ROI for your team",
+              "Reduced time-to-value strengthens customer confidence",
+              "Proven results from a real customer implementation",
+              "Scalable process built for rapid, confident adoption"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "hiring-plan",
+    "ok": true,
+    "error": null,
+    "elapsed": 4.801103115081787,
+    "raw": {
+      "schema": "bindery.pptx/v1",
+      "design_system": "acme@2.1.0",
+      "blocks": [
+        {
+          "component": "title",
+          "props": {
+            "eyebrow": "H2 Hiring Plan",
+            "headline": "Targeted Headcount Growth to Meet Backlog and Pipeline Demand",
+            "accent": "primary"
+          }
+        },
+        {
+          "component": "stat-trio",
+          "props": {
+            "stats": [
+              {
+                "value": "+8",
+                "label": "Engineering headcount",
+                "delta": "+8"
+              },
+              {
+                "value": "+5",
+                "label": "Sales headcount",
+                "delta": "+5"
+              },
+              {
+                "value": "+3",
+                "label": "Support headcount",
+                "delta": "+3"
+              }
+            ]
+          }
+        },
+        {
+          "component": "bullet-list",
+          "props": {
+            "heading": "Rationale",
+            "items": [
+              "Engineering: +8 hires to reduce product backlog and accelerate roadmap delivery",
+              "Sales: +5 hires to capture growing pipeline and support expansion targets",
+              "Support: +3 hires to maintain service levels as customer base scales",
+              "Combined additions align capacity with demand signals observed in H1"
+            ]
+          }
+        },
+        {
+          "component": "image-callout",
+          "props": {
+            "asset": "headcount-plan-chart.png",
+            "caption": "H2 planned headcount additions by function",
+            "accent": "neutral"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "incident-postmortem",
+    "ok": true,
+    "error": null,
+    "elapsed": 5.109017848968506,
+    "raw": {
+      "schema": "bindery.pptx/v1",
+      "design_system": "acme@2.1.0",
+      "blocks": [
+        {
+          "component": "title",
+          "props": {
+            "eyebrow": "Incident Postmortem \u2014 March 12",
+            "headline": "March 12 Outage: Summary and Path Forward",
+            "accent": "primary"
+          }
+        },
+        {
+          "component": "stat-trio",
+          "props": {
+            "stats": [
+              {
+                "value": "47 min",
+                "label": "Total downtime"
+              },
+              {
+                "value": "3",
+                "label": "Root causes identified"
+              },
+              {
+                "value": "22%",
+                "label": "MTTR improvement",
+                "delta": "+22%"
+              }
+            ]
+          }
+        },
+        {
+          "component": "bullet-list",
+          "props": {
+            "heading": "Next Steps",
+            "items": [
+              "6 action items assigned across engineering and ops teams",
+              "Root cause 1: address configuration drift in deployment pipeline",
+              "Root cause 2: improve alerting thresholds for early detection",
+              "Root cause 3: strengthen failover redundancy in affected service",
+              "Track remediation progress in weekly stakeholder review",
+              "Publish full postmortem doc to internal knowledge base"
+            ]
+          }
+        },
+        {
+          "component": "image-callout",
+          "props": {
+            "asset": "incident-timeline.png",
+            "caption": "Timeline of detection, response, and resolution during the March 12 incident",
+            "accent": "neutral"
+          }
+        }
+      ]
+    }
+  }
+]
