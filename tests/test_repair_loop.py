@@ -52,8 +52,9 @@ def test_repair_loop_converges(ds_root, monkeypatch, tmp_path):
     planner = _FlakyPlanner(ds.spec)
     out = tmp_path / "out.pptx"
 
-    result = plan_with_repair("brief", ds, "pptx", planner, out, max_attempts=3)
+    result, composition = plan_with_repair("brief", ds, "pptx", planner, out, max_attempts=3)
     assert result.path == out
+    assert composition["blocks"][0]["props"]["headline"] == "short"
     assert planner.calls == 2
 
 
