@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Bindery</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 16px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 15px; margin-top: 32px; color: #444; }
+  label { display: block; margin-top: 12px; font-size: 13px; color: #333; }
+  input, select, textarea { width: 100%; padding: 6px; font-size: 14px; box-sizing: border-box; }
+  textarea { height: 80px; }
+  button { margin-top: 16px; padding: 8px 16px; font-size: 14px; cursor: pointer; }
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+  td, th { text-align: left; padding: 4px 8px; border-bottom: 1px solid #eee; }
+  #status { margin-top: 12px; font-size: 13px; color: #555; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+  <h1>Bindery</h1>
+
+  <h2>New artifact</h2>
+  <form id="plan-form">
+    <label>Design system
+      <select id="ds"></select>
+    </label>
+    <label>Target
+      <select id="target">
+        <option value="pptx">pptx</option>
+        <option value="web">web</option>
+        <option value="infographic">infographic</option>
+      </select>
+    </label>
+    <label>Brief
+      <textarea id="intent" placeholder="Board update on Q3 program performance..."></textarea>
+    </label>
+    <button type="submit">Generate</button>
+  </form>
+  <div id="status"></div>
+
+  <h2>Artifacts</h2>
+  <table id="artifacts"><thead><tr><th>id</th><th>target</th><th>ds</th><th>created</th><th></th></tr></thead><tbody></tbody></table>
+
+<script>
+async function loadDesignSystems() {
+  const res = await fetch('/design-systems');
+  const list = await res.json();
+  const sel = document.getElementById('ds');
+  sel.innerHTML = list.map(d => `<option value="${d.name}@${d.version}">${d.name}@${d.version}</option>`).join('');
+}
+
+async function loadArtifacts() {
+  const res = await fetch('/artifacts');
+  const list = await res.json();
+  const tbody = document.querySelector('#artifacts tbody');
+  tbody.innerHTML = list.map(a => `
+    <tr>
+      <td>${a.id}</td><td>${a.target}</td><td>${a.design_system}</td><td>${a.created}</td>
+      <td><a href="/artifacts/${a.id}/file" target="_blank">download</a></td>
+    </tr>`).join('');
+}
+
+document.getElementById('plan-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const status = document.getElementById('status');
+  status.textContent = 'Planning (this calls a local model, can take up to a minute)...';
+  const body = {
+    intent: document.getElementById('intent').value,
+    target: document.getElementById('target').value,
+    design_system: document.getElementById('ds').value,
+  };
+  try {
+    const res = await fetch('/plan', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) { status.textContent = 'Error: ' + (data.detail || res.statusText); return; }
+    status.textContent = 'Done: ' + data.path;
+    loadArtifacts();
+  } catch (err) {
+    status.textContent = 'Error: ' + err;
+  }
+});
+
+loadDesignSystems();
+loadArtifacts();
+</script>
+</body>
+</html>

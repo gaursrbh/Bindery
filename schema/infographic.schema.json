@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bindery.infographic/v1",
+  "title": "Bindery Composition IR (infographic target vocab, extends bindery/v1)",
+  "allOf": [
+    { "$ref": "core.schema.json" },
+    {
+      "properties": {
+        "target": { "const": "infographic" },
+        "blocks": {
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/title" },
+              { "$ref": "#/$defs/statCallout" }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "title": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "title" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["headline"],
+          "properties": {
+            "eyebrow": { "type": "string", "maxLength": 40 },
+            "headline": { "type": "string", "maxLength": 90 },
+            "accent": { "enum": ["primary", "secondary", "neutral"] }
+          }
+        }
+      }
+    },
+    "statCallout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "stat-callout" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "label"],
+          "properties": {
+            "value": { "type": "string", "maxLength": 12 },
+            "label": { "type": "string", "maxLength": 40 },
+            "accent": { "enum": ["primary", "secondary", "neutral"] }
+          }
+        }
+      }
+    }
+  }
+}
