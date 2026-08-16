@@ -46,5 +46,117 @@
     "design_system": "acme@2.1.0",
     "sources": ["postmortem.md: 47min downtime, 3 root causes, 6 action items, MTTR improved 22% vs prior incident"],
     "constraints": { "max_slides": 1, "audience": "stakeholders", "tone": "measured", "must_include": ["downtime duration", "root cause count"] }
+  },
+  {
+    "id": "sales-pipeline-review",
+    "intent": "Weekly sales pipeline snapshot for the sales team standup",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["pipeline.csv: open deals 214 (+9), weighted value $3.2M (+4%), win rate 27% (-2pt)"],
+    "constraints": { "max_slides": 1, "audience": "sales team", "tone": "direct", "must_include": ["win rate"] }
+  },
+  {
+    "id": "engineering-roadmap-q4",
+    "intent": "Preview the top four engineering roadmap bets for Q4 to the eng org",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["roadmap-notes.md: platform migration, mobile offline mode, billing v2, on-call tooling overhaul"],
+    "constraints": { "max_slides": 1, "audience": "engineering org", "tone": "direct" }
+  },
+  {
+    "id": "onboarding-checklist",
+    "intent": "New-hire onboarding checklist slide for week one",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["onboarding.md: set up laptop, complete security training, meet manager, shadow a teammate, join team standup"],
+    "constraints": { "max_slides": 1, "audience": "new hires", "tone": "friendly" }
+  },
+  {
+    "id": "marketing-campaign-results",
+    "intent": "Report results of the spring email campaign to the marketing team",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["campaign-report.csv: open rate 38% (+6pt), click rate 5.1% (+1.2pt), conversions 812 (+140)"],
+    "constraints": { "max_slides": 1, "audience": "marketing team", "tone": "upbeat", "must_include": ["conversions"] }
+  },
+  {
+    "id": "partner-announcement",
+    "intent": "Announce a new integration partner to the whole company, include partner logo",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["partner-brief.md: partnership with Northwind Logistics, logo at assets/northwind-logo.png, launches next month"],
+    "constraints": { "max_slides": 1, "audience": "all-company", "tone": "upbeat" }
+  },
+  {
+    "id": "budget-variance-report",
+    "intent": "Explain Q1 budget variance to finance leadership with three headline figures",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["budget-variance.csv: actual spend $4.8M vs plan $4.5M (+7%), headcount variance +3, largest overage: cloud infra"],
+    "constraints": { "max_slides": 1, "audience": "finance leadership", "tone": "measured", "must_include": ["spend variance"] }
+  },
+  {
+    "id": "security-posture-update",
+    "intent": "Give the security team's quarterly posture update to the board, keep it terse",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["security-summary.md: 0 critical incidents, 92% of critical CVEs patched within SLA, phishing test click rate 3.1%"],
+    "constraints": { "max_slides": 1, "audience": "board", "tone": "measured", "must_include": ["critical incidents"] }
+  },
+  {
+    "id": "team-retro-highlights",
+    "intent": "Share the top takeaways from the team's quarterly retro",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["retro-notes.md: shipped faster with smaller PRs, on-call load unevenly distributed, docs still lagging code, want more pairing"],
+    "constraints": { "max_slides": 1, "audience": "team", "tone": "candid" }
+  },
+  {
+    "id": "product-metrics-dashboard-recap",
+    "intent": "Monthly product metrics recap for the product team, three core numbers",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["metrics.csv: DAU 58,200 (+3%), activation rate 41% (-1pt), churn 2.4% (0)"],
+    "constraints": { "max_slides": 1, "audience": "product team", "tone": "measured", "must_include": ["DAU", "churn"] }
+  },
+  {
+    "id": "event-recap-conference",
+    "intent": "Recap the company's booth presence at a trade conference, include a photo callout",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["event-notes.md: 1,200 booth visitors, 340 demo signups, photo at assets/booth-photo.png"],
+    "constraints": { "max_slides": 1, "audience": "marketing leadership", "tone": "upbeat" }
+  },
+  {
+    "id": "legal-compliance-update",
+    "intent": "Brief legal team on compliance certification status, list of open items",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["compliance-tracker.md: SOC2 renewal in progress, GDPR DPA backlog cleared, two vendor assessments overdue, pen test scheduled next month"],
+    "constraints": { "max_slides": 1, "audience": "legal team", "tone": "measured", "must_include": ["SOC2"] }
+  },
+  {
+    "id": "customer-support-kpis",
+    "intent": "Support team's monthly KPI snapshot for ops leadership",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["support-kpis.csv: first response time 4.2h (-1.1h), CSAT 92% (+2pt), ticket backlog 118 (-40)"],
+    "constraints": { "max_slides": 1, "audience": "ops leadership", "tone": "measured", "must_include": ["CSAT"] }
+  },
+  {
+    "id": "fundraising-progress",
+    "intent": "Update the founders on Series B fundraising progress, keep tone measured and factual",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["fundraise-tracker.md: 14 investor meetings held, 3 term sheets in discussion, target close end of next quarter"],
+    "constraints": { "max_slides": 1, "audience": "founders", "tone": "measured" }
+  },
+  {
+    "id": "office-move-announcement",
+    "intent": "Announce the new office location to the whole company with a photo of the space",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["office-move.md: moving to 500 Market St, move date June 3, photo at assets/new-office.png"],
+    "constraints": { "max_slides": 1, "audience": "all-company", "tone": "upbeat" }
   }
 ]
