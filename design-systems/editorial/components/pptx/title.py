@@ -48,4 +48,4 @@ def layout(slide, props: dict, tokens: dict, y: float = 0.6) -> float:
     p.font.name = tokens["typography"]["family"]["value"]
     p.font.bold = True
 
-    return (cursor - y) + 1.5
+    return (cursor - y) + 1.6 + 0.2
