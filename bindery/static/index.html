@@ -4,50 +4,145 @@
 <meta charset="utf-8" />
 <title>Bindery</title>
 <style>
-  body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 16px; }
-  h1 { font-size: 20px; }
-  h2 { font-size: 15px; margin-top: 32px; color: #444; }
-  label { display: block; margin-top: 12px; font-size: 13px; color: #333; }
-  input, select, textarea { width: 100%; padding: 6px; font-size: 14px; box-sizing: border-box; }
-  textarea { height: 80px; }
-  button { margin-top: 16px; padding: 8px 16px; font-size: 14px; cursor: pointer; }
-  table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
-  td, th { text-align: left; padding: 4px 8px; border-bottom: 1px solid #eee; }
-  #status { margin-top: 12px; font-size: 13px; color: #555; white-space: pre-wrap; }
+  :root {
+    --bg: #f7f5f0;
+    --panel: #ffffff;
+    --border: #e4e0d6;
+    --ink: #1f1c17;
+    --muted: #7a7468;
+    --primary: #1f3a5f;
+    --accent: #c97a2b;
+    --ok-bg: #eef6ee;
+    --ok-ink: #2c5e35;
+    --err-bg: #fbeceb;
+    --err-ink: #a4342a;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; }
+  header h1 { font-size: 22px; margin: 0; letter-spacing: -0.01em; }
+  header .tag { font-size: 12px; color: var(--muted); }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .panel h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  label { display: block; margin-top: 14px; font-size: 13px; color: var(--ink); font-weight: 500; }
+  label:first-child { margin-top: 0; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  input, select, textarea {
+    width: 100%; margin-top: 6px; padding: 9px 10px; font-size: 14px;
+    border: 1px solid var(--border); border-radius: 6px; background: #fdfcfa;
+    font-family: inherit; color: var(--ink);
+  }
+  select { cursor: pointer; }
+  textarea { height: 90px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); }
+
+  button {
+    margin-top: 18px; padding: 10px 20px; font-size: 14px; font-weight: 600;
+    background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer;
+  }
+  button:hover { opacity: 0.92; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  #status {
+    margin-top: 14px; padding: 10px 12px; border-radius: 6px; font-size: 13px;
+    display: none; white-space: pre-wrap;
+  }
+  #status.visible { display: block; }
+  #status.pending { background: #f2f0ea; color: var(--muted); }
+  #status.ok { background: var(--ok-bg); color: var(--ok-ink); }
+  #status.err { background: var(--err-bg); color: var(--err-ink); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 8px 10px; color: var(--muted); font-weight: 600;
+    text-transform: uppercase; font-size: 11px; letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px;
+    font-weight: 600; background: #eef2f6; color: var(--primary);
+  }
+  .empty { color: var(--muted); font-style: italic; padding: 16px 0; }
+  a.dl { color: var(--accent); text-decoration: none; font-weight: 600; }
+  a.dl:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-  <h1>Bindery</h1>
+  <header>
+    <h1>Bindery</h1>
+    <span class="tag">local-first design artifact studio</span>
+  </header>
 
-  <h2>New artifact</h2>
-  <form id="plan-form">
-    <label>Design system
-      <select id="ds"></select>
-    </label>
-    <label>Target
-      <select id="target">
-        <option value="pptx">pptx</option>
-        <option value="web">web</option>
-        <option value="infographic">infographic</option>
-      </select>
-    </label>
-    <label>Planner backend
-      <select id="planner">
-        <option value="ollama">Ollama (local, free)</option>
-        <option value="claude-cli">Claude Code CLI (subscription-billed)</option>
-      </select>
-    </label>
-    <label>Brief
-      <textarea id="intent" placeholder="Board update on Q3 program performance..."></textarea>
-    </label>
-    <button type="submit">Generate</button>
-  </form>
-  <div id="status"></div>
+  <div class="panel">
+    <h2>New artifact</h2>
+    <form id="plan-form">
+      <div class="row">
+        <label>Design system
+          <select id="ds"></select>
+        </label>
+        <label>Target
+          <select id="target">
+            <option value="pptx">pptx</option>
+            <option value="web">web</option>
+            <option value="infographic">infographic</option>
+          </select>
+        </label>
+        <label>Planner backend
+          <select id="planner">
+            <option value="ollama">Ollama (local, free)</option>
+            <option value="claude-cli">Claude Code CLI (subscription-billed)</option>
+          </select>
+        </label>
+      </div>
+      <label>Brief
+        <textarea id="intent" placeholder="Board update on Q3 program performance..."></textarea>
+      </label>
+      <button type="submit" id="submit-btn">Generate</button>
+      <div id="status"></div>
+    </form>
+  </div>
 
-  <h2>Artifacts</h2>
-  <table id="artifacts"><thead><tr><th>id</th><th>target</th><th>ds</th><th>created</th><th></th></tr></thead><tbody></tbody></table>
+  <div class="panel">
+    <h2>Artifacts</h2>
+    <table id="artifacts">
+      <thead><tr><th>ID</th><th>Target</th><th>Design system</th><th>Created</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div id="artifacts-empty" class="empty" style="display:none">No artifacts yet — generate one above.</div>
+  </div>
 
 <script>
+function setStatus(text, kind) {
+  const el = document.getElementById('status');
+  el.textContent = text;
+  el.className = 'visible ' + kind;
+}
+
 async function loadDesignSystems() {
   const res = await fetch('/design-systems');
   const list = await res.json();
@@ -59,20 +154,34 @@ async function loadArtifacts() {
   const res = await fetch('/artifacts');
   const list = await res.json();
   const tbody = document.querySelector('#artifacts tbody');
-  tbody.innerHTML = list.map(a => `
+  const empty = document.getElementById('artifacts-empty');
+  if (list.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  tbody.innerHTML = list.slice().reverse().map(a => `
     <tr>
-      <td>${a.id}</td><td>${a.target}</td><td>${a.design_system}</td><td>${a.created}</td>
-      <td><a href="/artifacts/${a.id}/file" target="_blank">download</a></td>
+      <td><code>${a.id}</code></td>
+      <td><span class="badge">${a.target}</span></td>
+      <td>${a.design_system}</td>
+      <td>${a.created}</td>
+      <td><a class="dl" href="/artifacts/${a.id}/file" target="_blank">Download</a></td>
     </tr>`).join('');
 }
 
 document.getElementById('plan-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const status = document.getElementById('status');
+  const btn = document.getElementById('submit-btn');
   const planner = document.getElementById('planner').value;
-  status.textContent = planner === 'claude-cli'
-    ? 'Planning via Claude Code CLI (subscription-billed)...'
-    : 'Planning (local Ollama model, can take up to a minute)...';
+  btn.disabled = true;
+  setStatus(
+    planner === 'claude-cli'
+      ? 'Planning via Claude Code CLI (subscription-billed)...'
+      : 'Planning via local Ollama model — can take up to a minute...',
+    'pending'
+  );
   const body = {
     intent: document.getElementById('intent').value,
     target: document.getElementById('target').value,
@@ -84,11 +193,13 @@ document.getElementById('plan-form').addEventListener('submit', async (e) => {
       method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body),
     });
     const data = await res.json();
-    if (!res.ok) { status.textContent = 'Error: ' + (data.detail || res.statusText); return; }
-    status.textContent = 'Done: ' + data.path;
+    if (!res.ok) { setStatus('Error: ' + (data.detail || res.statusText), 'err'); return; }
+    setStatus('Done — ' + data.path, 'ok');
     loadArtifacts();
   } catch (err) {
-    status.textContent = 'Error: ' + err;
+    setStatus('Error: ' + err, 'err');
+  } finally {
+    btn.disabled = false;
   }
 });
 
