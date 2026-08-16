@@ -1,0 +1,44 @@
+[
+  {
+    "id": "q3-board-update",
+    "ok": true,
+    "error": null,
+    "elapsed": 28.883215188980103,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Q3 Program Performance Update\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"142,300\",\n            \"label\": \"Enrollment\",\n            \"delta\": \"+12%\"\n          },\n          {\n            \"value\": \"$412\",\n            \"label\": \"Cost per Member\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"94.2%\",\n            \"label\": \"Retention\",\n            \"delta\": \"+1.4pt\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Enrollment trend: steady growth with a 12% increase\",\n          \"Cost per member remains stable at $412\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"enrollment-trend-chart\",\n        \"caption\": \"Enrollment trend over Q3\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "product-launch-recap",
+    "ok": true,
+    "error": null,
+    "elapsed": 23.53277087211609,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"March Product Launch Recap\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"40k\",\n            \"label\": \"Signups in Week 1\",\n            \"delta\": \"+20%\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Press Mentions\",\n            \"delta\": \"+1\"\n          },\n          {\n            \"value\": \"61\",\n            \"label\": \"NPS\",\n            \"delta\": \"+5\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Successfully onboarded 40,000 users in the first week\",\n          \"Received positive press coverage with 3 mentions\",\n          \"Customer satisfaction measured at an NPS of 61\"\n        ],\n        \"heading\": \"Key Highlights\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"launch-event.jpg\",\n        \"caption\": \"Celebrating the launch with the team\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "risk-summary",
+    "ok": true,
+    "error": null,
+    "elapsed": 22.556427240371704,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Quarterly Risk Review\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"1\",\n            \"label\": \"Critical Risk\",\n            \"delta\": \"Vendor Con\"\n          },\n          {\n            \"value\": \"2\",\n            \"label\": \"High Risk\",\n            \"delta\": \"On-Call\"\n          },\n          {\n            \"value\": \"1\",\n            \"label\": \"Medium Risk\",\n            \"delta\": \"Region\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Vendor Concentration\",\n          \"On-Call Fatigue\",\n          \"Single-Region Failover Gap\",\n          \"Unpatched CVE Backlog\"\n        ],\n        \"heading\": \"Top Operational Risks\"\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"placeholder-risk\",\n        \"caption\": \"Illustration of Risk Management\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "customer-story",
+    "ok": true,
+    "error": null,
+    "elapsed": 21.900007247924805,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"Transformative Success: A Case Study\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"6 weeks\",\n            \"label\": \"Original Onboarding Time\",\n            \"delta\": \"-2 weeks, \"},\n          {\n            \"value\": \"4 days\",\n            \"label\": \"New Onboarding Time\",\n            \"delta\": \"+2 weeks, \"\n          },\n          {\n            \"value\": \"92%\",\n            \"label\": \"Time Saved\",\n            \"delta\": \"+\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Cut onboarding time from 6 weeks to 4 days\",\n          \"Streamlined process for immediate impact\",\n          \"Enhanced customer satisfaction and productivity\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"assets/customer-logo.png\",\n        \"caption\": \"Customer Logo\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "hiring-plan",
+    "ok": true,
+    "error": null,
+    "elapsed": 21.299522161483765,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"H2 Hiring Plan\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"+8\",\n            \"label\": \"Engineering\",\n            \"delta\": \"increase\"\n          },\n          {\n            \"value\": \"+5\",\n            \"label\": \"Sales\",\n            \"delta\": \"increase\"\n          },\n          {\n            \"value\": \"+3\",\n            \"label\": \"Support\",\n            \"delta\": \"increase\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Backlog growth necessitates additional engineering resources\",\n          \"Pipeline expansion requires more sales personnel\",\n          \"Customer support needs rise with product adoption\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"pipeline-growth-chart\",\n        \"caption\": \"Illustration of pipeline growth driving hiring needs\"\n      }\n    }\n  ]\n}"
+  },
+  {
+    "id": "incident-postmortem",
+    "ok": true,
+    "error": null,
+    "elapsed": 23.489176034927368,
+    "raw": "{\n  \"schema\": \"bindery.pptx/v1\",\n  \"design_system\": \"acme@2.1.0\",\n  \"blocks\": [\n    {\n      \"component\": \"title\",\n      \"props\": {\n        \"headline\": \"March 12 Outage Postmortem\",\n        \"accent\": \"primary\"\n      }\n    },\n    {\n      \"component\": \"stat-trio\",\n      \"props\": {\n        \"stats\": [\n          {\n            \"value\": \"47 min\",\n            \"label\": \"Downtime Duration\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"3\",\n            \"label\": \"Root Causes\",\n            \"delta\": \"0%\"\n          },\n          {\n            \"value\": \"22%\",\n            \"label\": \"MTTR Improvement vs Prior Inc.\",\n            \"delta\": \"+22%\"\n          }\n        ]\n      }\n    },\n    {\n      \"component\": \"bullet-list\",\n      \"props\": {\n        \"items\": [\n          \"Action Item 1\",\n          \"Action Item 2\",\n          \"Action Item 3\",\n          \"Action Item 4\",\n          \"Action Item 5\",\n          \"Action Item 6\"\n        ]\n      }\n    },\n    {\n      \"component\": \"image-callout\",\n      \"props\": {\n        \"asset\": \"placeholder-image\",\n        \"caption\": \"Illustration of system architecture\",\n        \"accent\": \"neutral\"\n      }\n    }\n  ]\n}"
+  }
+]

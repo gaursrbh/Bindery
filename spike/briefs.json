@@ -1,0 +1,50 @@
+[
+  {
+    "id": "q3-board-update",
+    "intent": "Board update on Q3 program performance",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["q3-metrics.csv: enrollment 142300 (+12%), cost per member $412 (0%), retention 94.2% (+1.4pt)"],
+    "constraints": { "max_slides": 1, "audience": "executive", "tone": "measured", "must_include": ["enrollment trend", "cost per member"] }
+  },
+  {
+    "id": "product-launch-recap",
+    "intent": "Recap the results of the March product launch for the leadership team",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["launch-notes.md: 40k signups in week 1, 3 press mentions, NPS 61"],
+    "constraints": { "max_slides": 1, "audience": "leadership", "tone": "upbeat" }
+  },
+  {
+    "id": "risk-summary",
+    "intent": "Summarize top operational risks for the quarterly risk review",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["risk-register.md: vendor concentration, on-call fatigue, single-region failover gap, unpatched CVE backlog"],
+    "constraints": { "max_slides": 1, "audience": "executive", "tone": "measured", "must_include": ["vendor concentration"] }
+  },
+  {
+    "id": "customer-story",
+    "intent": "One-slide customer success story to open a sales deck",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["case-study.md: customer cut onboarding time from 6 weeks to 4 days, logo asset at assets/customer-logo.png"],
+    "constraints": { "max_slides": 1, "audience": "prospective customers", "tone": "confident" }
+  },
+  {
+    "id": "hiring-plan",
+    "intent": "Present the H2 hiring plan headcount and rationale to the exec team",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["headcount-plan.csv: eng +8, sales +5, support +3; rationale notes on backlog and pipeline growth"],
+    "constraints": { "max_slides": 1, "audience": "executive", "tone": "measured", "must_include": ["engineering headcount"] }
+  },
+  {
+    "id": "incident-postmortem",
+    "intent": "Summarize the March 12 outage postmortem for stakeholders, three key stats and next steps",
+    "target": "pptx",
+    "design_system": "acme@2.1.0",
+    "sources": ["postmortem.md: 47min downtime, 3 root causes, 6 action items, MTTR improved 22% vs prior incident"],
+    "constraints": { "max_slides": 1, "audience": "stakeholders", "tone": "measured", "must_include": ["downtime duration", "root cause count"] }
+  }
+]

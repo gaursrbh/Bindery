@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Spike: test Claude API with prompted JSON + manual validation against the bindery.pptx/v1 IR.
+
+No API-level schema enforcement (no tool-use/JSON-schema constraint) — the model is
+just instructed via the system prompt to emit JSON matching the schema, and the raw
+text output is parsed and validated afterward. This mirrors the "no constraint" /
+"prompt and validate" baseline from the local-model spike, but on Claude.
+"""
+import json
+import os
+import sys
+import time
+from pathlib import Path
+
+HERE = Path(__file__).parent
+
+# Load ANTHROPIC_API_KEY from .env.local if not already in the environment.
+env_file = HERE / ".env.local"
+if env_file.exists() and "ANTHROPIC_API_KEY" not in os.environ:
+    for line in env_file.read_text().splitlines():
+        if line.startswith("ANTHROPIC_API_KEY="):
+            os.environ["ANTHROPIC_API_KEY"] = line.split("=", 1)[1].strip()
+
+try:
+    import jsonschema
+    import anthropic
+except ImportError:
+    sys.exit("pip install jsonschema anthropic")
+
+SCHEMA = json.loads((HERE / "schema.json").read_text())
+BRIEFS = json.loads((HERE / "briefs.json").read_text())
+
+SYSTEM = f"""You are the Planner in a slide-generation pipeline. Given a brief, produce a single
+Composition IR JSON object conforming to this bindery.pptx/v1 JSON Schema:
+
+{json.dumps(SCHEMA, indent=2)}
+
+Use ONLY the components defined in the schema. Never invent colors, coordinates, or font
+sizes — "accent" is one of: primary, secondary, neutral. Output ONLY the JSON object,
+nothing else — no markdown fences, no commentary."""
+
+
+def build_prompt(brief):
+    return f"Brief:\n{json.dumps(brief, indent=2)}\n\nProduce the Composition IR JSON now."
+
+
+def call_claude(client, model, prompt):
+    t0 = time.time()
+    resp = client.messages.create(
+        model=model,
+        max_tokens=1024,
+        system=SYSTEM,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    elapsed = time.time() - t0
+    text = "".join(b.text for b in resp.content if b.type == "text")
+    return text, elapsed
+
+
+def strip_fences(text):
+    text = text.strip()
+    if text.startswith("```"):
+        lines = text.splitlines()
+        lines = lines[1:] if lines[0].startswith("```") else lines
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        text = "\n".join(lines)
+    return text.strip()
+
+
+def validate(raw):
+    cleaned = strip_fences(raw)
+    try:
+        obj = json.loads(cleaned)
+    except json.JSONDecodeError as e:
+        return False, f"invalid JSON: {e}"
+    try:
+        jsonschema.validate(obj, SCHEMA)
+    except jsonschema.ValidationError as e:
+        return False, f"schema violation: {e.message}"
+    return True, None
+
+
+def run(model):
+    client = anthropic.Anthropic()
+    print(f"\n=== Claude API, prompted JSON + manual validation ({model}) ===")
+    results = []
+    for brief in BRIEFS:
+        prompt = build_prompt(brief)
+        try:
+            raw, elapsed = call_claude(client, model, prompt)
+        except Exception as e:
+            print(f"  {brief['id']:25s} ERROR calling model: {e}")
+            results.append({"id": brief["id"], "ok": False, "error": str(e), "elapsed": None})
+            continue
+        ok, err = validate(raw)
+        status = "PASS" if ok else "FAIL"
+        print(f"  {brief['id']:25s} {status:5s} {elapsed:5.1f}s  {err or ''}")
+        results.append({"id": brief["id"], "ok": ok, "error": err, "elapsed": elapsed, "raw": raw})
+    n_ok = sum(r["ok"] for r in results)
+    print(f"  -> {n_ok}/{len(results)} first-attempt valid")
+    return results
+
+
+if __name__ == "__main__":
+    model = sys.argv[1] if len(sys.argv) > 1 else "claude-sonnet-5"
+    results = run(model)
+    out = HERE / f"results-{model.replace('/', '_')}-prompted.json"
+    out.write_text(json.dumps(results, indent=2))
+    print(f"\nWrote {out}")
