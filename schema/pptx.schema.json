@@ -13,7 +13,10 @@
               { "$ref": "#/$defs/title" },
               { "$ref": "#/$defs/statTrio" },
               { "$ref": "#/$defs/bulletList" },
-              { "$ref": "#/$defs/imageCallout" }
+              { "$ref": "#/$defs/imageCallout" },
+              { "$ref": "#/$defs/featureGrid" },
+              { "$ref": "#/$defs/statGroup" },
+              { "$ref": "#/$defs/signalTable" }
             ]
           }
         }
@@ -106,6 +109,95 @@
             "caption": { "type": "string", "maxLength": 100 },
             "accent": { "enum": ["primary", "secondary", "neutral"] },
             "image_path": { "type": "string", "maxLength": 500 }
+          }
+        }
+      }
+    },
+    "featureGrid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "feature-grid" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["features"],
+          "properties": {
+            "features": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["title", "description"],
+                "properties": {
+                  "title": { "type": "string", "maxLength": 40 },
+                  "description": { "type": "string", "maxLength": 140 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "statGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "stat-group" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stats"],
+          "properties": {
+            "heading": { "type": "string", "maxLength": 40 },
+            "stats": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["value", "label"],
+                "properties": {
+                  "value": { "type": "string", "maxLength": 12 },
+                  "label": { "type": "string", "maxLength": 60 }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "signalTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "props"],
+      "properties": {
+        "component": { "const": "signal-table" },
+        "props": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rows"],
+          "properties": {
+            "heading": { "type": "string", "maxLength": 40 },
+            "rows": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["signal", "action"],
+                "properties": {
+                  "signal": { "type": "string", "maxLength": 100 },
+                  "action": { "type": "string", "maxLength": 120 }
+                }
+              }
+            }
           }
         }
       }

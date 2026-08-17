@@ -26,6 +26,7 @@ _SLIDE_WIDTH_IN = 10
 _SLIDE_HEIGHT_IN = 5.63
 _BLANK_LAYOUT_INDEX = 6
 _MARGIN_TOP_IN = 0.5
+_MARGIN_BOTTOM_IN = 0.3
 
 _CORE_SCHEMA = json.loads((SCHEMA_ROOT / "core.schema.json").read_text())
 _REGISTRY = Registry().with_resource(
@@ -113,6 +114,21 @@ def render(composition: dict, ds: DesignSystem, out_path: Path) -> RenderResult:
         shapes_before = len(slide.shapes)
         consumed = layout_fn(slide, block["props"], tokens, cursor_y)
         cursor_y += consumed if consumed is not None else 0.0
+
+        # A block can pass its own per-shape overflow check (check_overflow,
+        # below) yet still push the slide's cumulative content past the
+        # physical slide boundary — found via a real multi-block brief where
+        # a 4th stacked block rendered fine in isolation but landed below
+        # the visible slide edge. Per-shape overflow alone never catches
+        # this; only the running cursor does.
+        if cursor_y > _SLIDE_HEIGHT_IN - _MARGIN_BOTTOM_IN:
+            raise RenderError(
+                index, component,
+                f"slide content overflows past the slide boundary: cursor at "
+                f"{cursor_y:.2f}in, slide usable height is "
+                f"{_SLIDE_HEIGHT_IN - _MARGIN_BOTTOM_IN:.2f}in",
+            )
+
         new_shapes = list(slide.shapes)[shapes_before:]
         for shape in new_shapes:
             if shape.has_text_frame:

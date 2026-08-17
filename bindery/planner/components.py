@@ -23,6 +23,17 @@ _BASE_COMPONENT_DOCS: dict[str, str] = {
     "image-callout": "A named image asset plus a caption. Use when the brief "
     "references a chart, photo, or diagram that isn't in this pipeline's "
     "source content — the asset is referenced by name, not generated.",
+    "feature-grid": "2-4 side-by-side (title, description) cards. Use for "
+    "parallel qualitative features/capabilities being introduced together — "
+    "not for numeric facts (use stat-trio/stat-group) or a single list of "
+    "enumerable points (use bullet-list).",
+    "stat-group": "2-6 side-by-side numeric callouts (value, label) under an "
+    "optional section heading. Use when there are more or fewer than exactly "
+    "three numeric facts to foreground, or when multiple stat clusters need "
+    "distinct headings on one slide; use stat-trio instead for exactly three.",
+    "signal-table": "A two-column table of (signal, action) row pairs under "
+    "an optional heading. Use for a brief that maps triggers/conditions to "
+    "the corresponding response — not for a simple enumerable list.",
 }
 
 

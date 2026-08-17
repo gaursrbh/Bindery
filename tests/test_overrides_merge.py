@@ -6,7 +6,10 @@ from bindery.ds import loader
 def test_no_overrides_file_leaves_schema_unchanged(ds_root):
     ds = loader.load("reference", root=ds_root)
     base_defs = set(ds.effective_schemas["pptx"]["$defs"])
-    assert base_defs == {"title", "statTrio", "bulletList", "imageCallout"}
+    assert base_defs == {
+        "title", "statTrio", "bulletList", "imageCallout",
+        "featureGrid", "statGroup", "signalTable",
+    }
 
 
 def test_additive_component(ds_root):

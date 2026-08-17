@@ -14,6 +14,9 @@ def test_load_reference_ds(ds_root):
         "stat-trio",
         "bullet-list",
         "image-callout",
+        "feature-grid",
+        "stat-group",
+        "signal-table",
     }
     assert loader.validate(ds) == []
 

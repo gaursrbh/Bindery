@@ -9,7 +9,10 @@ def test_describe_components_base_only(ds_root):
     ds = load("reference@1.0.0", root=ds_root)
     docs = describe_components(ds, "pptx")
     names = {d.name for d in docs}
-    assert names == {"title", "stat-trio", "bullet-list", "image-callout"}
+    assert names == {
+        "title", "stat-trio", "bullet-list", "image-callout",
+        "feature-grid", "stat-group", "signal-table",
+    }
     for d in docs:
         assert d.description and d.description != d.name
 
