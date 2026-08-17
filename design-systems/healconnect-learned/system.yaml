@@ -1,0 +1,5 @@
+name: healconnect-learned
+version: 1.0.0
+description: Learned from HealConnect - Delivered Outcomes.pptx (slides 4-6), hand-curated per-run colors/sizes since bindery import's frequency ranking mislabeled roles
+targets:
+  - pptx
